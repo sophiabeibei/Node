@@ -1,3 +1,7 @@
+学习Vue:
+    文档地址:
+        https://cn.vuejs.org/v2/guide/
+    不要买书,直接看文档;
 一.数组的方法
     es5,es6
         pop
@@ -93,8 +97,32 @@ MVVM: 双向数据绑定(双向);双向的过程里,数据变化会影响视图,
 
 
 
+package-lock.json文件: 记录安装的版本号;
+    {
+      "name": "Vue",
+      "version": "1.0.0",
+      "lockfileVersion": 1,
+      "dependencies": {
+        "vue": {
+          "version": "2.4.4",//->本版号
+          "resolved": "https://registry.npmjs.org/vue/-/vue-2.4.4.tgz",
+          "integrity": "sha512-PCiRmc8ZT1DD5+BN8QUAmnkBefcCLfZVSuhc1u7iu5JoPrSHyyk/+4nehm7k2xVMi8+RFLk5WIHAN14UKF0txw=="
+        }
+      }
+    }
 
 
+
+指令directive
+    1.v-model
+        双向绑定
+    2.v-once
+        绑定一次
+    3.v-html
+        展示成html
+    4.v-text
+        可以解决闪烁问题(解决单行闪烁)
+        {{}}: 是v-text的简写;
 
 
 
