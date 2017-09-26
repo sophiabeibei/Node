@@ -129,7 +129,19 @@ package-lock.json文件: 记录安装的版本号;
 
     6.v-cloak: 解决闪烁问题;
 
+    7.v-if
 
+    8.v-else-if
+
+    9.v-else
+
+
+http://v3.bootcss.com
+
+bootstrap
+    1.安装bootstrap执行命令:
+        npm install bootstrap --save
+        最新版本: @3.3.7
 
 
 
@@ -138,37 +150,4 @@ package-lock.json文件: 记录安装的版本号;
 
 设置快捷键
     file => settings => live template => + => 写快捷键的名字 => 快捷键的内容 => define
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

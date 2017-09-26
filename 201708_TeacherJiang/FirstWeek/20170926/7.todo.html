@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>7.todo</title>
+</head>
+<body>
+<div id="app">
+    <!-- 如果要获取输入框的内容,需要使用keyup-->
+    <!--<input type="text" v-model="todo" @keyup="add">-->
+
+    <!--@keyup.13="add"    @keyup.enter="add": 可以放键盘码,也可以放键盘的名字;     下面的方法可以把if判断去掉;-->
+    <input type="text" v-model="todo" @keyup.enter="add">
+    <ul>
+        <li v-for="todo in todos">{{todo}}</li>
+    </ul>
+    <!-- 需求俩个: 提示输入的条数大于5个了;
+        1.先是没有这个dom,之后添加;只变化一次的,使用v-if;(常用的需求)
+        2.或者还有一种可能: 这个dom先隐藏,之后再显示;如果频繁切换显示隐藏建议使用v-show;
+    -->
+
+    <!-- v-if -->
+    <div v-if="todos.length<5">少于五个了!!!</div>
+
+    <!-- v-show -->
+    <div v-show="todos.length>5">大于五个了!!!</div>
+
+    <!--  v-else-if: -->
+    <div v-else-if="todos.length<=8 && todos.length>=5">少于8个!!</div>
+
+    <!--  v-else: -->
+    <div v-else="">超过 超过8个!!</div>
+</div>
+
+<script src="Vue/node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: "#app",
+        data: {
+            todo: "",
+            todos: []
+        },
+        methods: {
+            add(e){
+                //alert(this.todo);
+                if(e.keyCode===13){//->13: 键盘的Enter
+                    //this.todos.unshift(this.todo);//->添加到前面
+                    this.todos.push(this.todo);//->添加到末尾
+                    this.todo = "";
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
