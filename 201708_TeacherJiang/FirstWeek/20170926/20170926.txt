@@ -4,7 +4,50 @@
         push
         shiifit
         unshift
+        indexOf
+        slice
+        lastIndexOf
+        reverse
+        sort
+        join
+        map
+        forEach
+        filter
+        for
+        of
+        splice
+        includes
+        concat
+        some
+        every
+        reduce
+        find
 
+二.框架和库
+    框架是库的升级版;
+    1.库
+        jQuery,zepto,animate.css;库中提供了一些方法,我们调用库里的方法;(我们是主动的,库是被动的)
+
+    2.框架
+        框架是按照人家的写法,人家调我们;(我们是被动的,框架是主动的)
+        学框架的时候,要学它的用法;按照人家的用法使用;
+
+    3.渐进式框架
+        vue核心是做视图的;可以做工程化的项目;核心非常小;压缩后20K;
+        非常适合在移动端使用;
+
+    vue很简单?
+        hello world简单,其它还是很难的!
+        github.io/vuejs
+
+    谈一谈对渐进式框架的理解?
+        1."声明式"渲染: 不需要关心过程;用的时候不需要关心如何实现;
+        2.组件系统: 将相同内容抽出来(很像函数的方法),多次使用(复用);可以方便维护;
+        3.客户端路由: spa框架(single page application)不需要页面跳转,只有一个页面;叫前端路由;
+        4.大规模的状态管理: 为了管理数据;(vue提供一个容器...)
+        5.构建工具: 1.gulp;2.webpack;默认提供了构建webpack的方法;
+        6.ajax获取: 叫vue-resource/axios(很像ajax)
+        最基础的要学vue,还要学vue-router,还要学vuex,还要学vue-cil,还要学axios = vue全家桶(总体讲);
 
 
 

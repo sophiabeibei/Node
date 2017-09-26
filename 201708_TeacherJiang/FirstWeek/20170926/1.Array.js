@@ -140,11 +140,55 @@
 
 // 6.1.4题: 数组扁平化
 //----------------------------------------reduce: 习题4;数组扁平化
-let ary = [[1,2,3,],[4,5,6],[7,8,9]];
-let obj = ary.reduce(function (prev, next) {
-    return prev.concat(next);
-});
+// let ary = [[1,2,3,],[4,5,6],[7,8,9]];
+// let obj = ary.reduce(function (prev, next) {
+//     return prev.concat(next);
+// });
+// console.log(obj);
+
+
+
+// 6.1.5: 数组扁平化
+//----------------------------------------reduce:
+let ary = [{price: 20,count: 1},{price: 39,count: 2},{price: 39,count: 2}];
+let obj = ary.reduce(function (prev, next, index) {
+    // 需求: 求和
+    console.log(prev, next, index);//->循环三次
+    /*
+    * 第一次: 0 { price: 20, count: 1 } 0
+    * 第二次: 20 { price: 39, count: 2 } 1
+    * 第三次: 98 { price: 39, count: 2 } 2
+    * */
+    return prev + next.price * next.count;//->176
+},0);
 console.log(obj);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
