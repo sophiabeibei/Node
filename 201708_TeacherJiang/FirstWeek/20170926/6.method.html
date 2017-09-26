@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>6.method</title>
+    <style>
+
+    </style>
+</head>
+<body>
+
+<div id="app1" onclick="fn()">点我有惊喜</div>
+<div id="app">
+    <!--<button v-on:click="a">点我啊!</button>-->
+
+    <!-- vue中方法可以带括号也可以不带括号,-->
+    <!--<button v-on:mousedown="a({$event})">点我啊!</button>-->
+
+    <!-- v-on可以简写成@事件;如果写括号需要手动传入$event属性-->
+    <button @mousedown="a({$event})">点我啊!</button>
+</div>
+
+
+
+<script src="Vue/node_modules/vue/dist/vue.js"></script>
+<script>
+
+    let vm = new Vue({
+        el: "#app",
+        data: {},
+        //->methods: methods存放的就是方法;不能和data中的内容重名,最后都会合并到vm的实例上,被vm所代理;method中的this指向的都是vm实例;
+        //->vue里不能使用箭头函数
+        methods: {
+            a(e){
+                //alert("这个方法a可以不带括号哦");
+                //alert(e);
+                //console.log(1);
+                console.log(this);//->this: 实例;
+            }
+        }
+    });
+
+
+
+
+
+    /*-------------------------------------------------*/
+    console.log(app1.onclick);
+    function fn() {
+        //this: window
+        alert("你好!你真可爱~");
+    }
+
+</script>
+</body>
+</html>

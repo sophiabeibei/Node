@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>4.v-for(for循环)</title>
+    <style>
+        ul{
+            list-style: none;
+        }
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <!--  要循环谁,就将v-for写在谁的身上-->
+    <ul v-cloak>
+        <!-- fruit是自己声明的一个变量-->
+
+        <!-- of-->
+        <li v-for="fruit of fruits">{{fruit}}</li>
+        <li>-------------------------------------</li>
+
+        <!-- in-->
+        <li v-for="fruit in fruits">{{fruit}}</li>
+        <li>-------------------------------------</li>
+
+        <!-- 加索引-->
+        <li v-for="(fruit,index) in fruits">{{index}}: {{fruit}}</li>
+        <li>-------------------------------------</li>
+    </ul>
+    <!--<ul>
+        <li>1. iphone 8
+            <ul>
+                <li>1.1. 黑色</li>
+                <li>1.2. 白色</li>
+            </ul>
+        </li>
+        <li>2. iphone 7 plus
+            <ul>
+                <li>2.1. 红色</li>
+            </ul>
+        </li>
+        <li>3. iphone x
+            <ul>
+                <li>3.1. 粉色</li>
+            </ul>
+        </li>
+    </ul>-->
+
+    <!-- 先让带有v-cloak的元素隐藏掉,当vue加载好后,会自动将v-cloak这个属性移除掉-->
+    <ul v-cloak>
+        <li v-for="(phone,index) in iphones">{{index+1}} {{phone.name}}
+            <ul>
+                <li v-for="(iphone,index2) in phone.type">{{index+1}}.{{index2+1}}{{iphone}}</li>
+            </ul>
+        </li>
+        <li>-------------------------------------</li>
+    </ul>
+
+    <ul v-cloak>
+        <li v-for="(val,key) in school">{{key}}: {{val}}</li>
+        <li>-------------------------------------</li>
+    </ul>
+
+    <ul v-cloak>
+        <li v-for="val in aaa">{{val}}</li>
+        <li>-------------------------------------</li>
+    </ul>
+
+</div>
+
+<script src="Vue/node_modules/vue/dist/vue.js"></script>
+<script>
+    //->循环:1.有数组;2.有对象;
+    //->数组中有什么循环: for...in;2.forEach;
+    let vm = new Vue({
+        el: "#app",
+        data: {
+            aaa: "123456789",
+            fruits: ["芒果","荔枝","榴莲"],
+            iphones: [
+                {name: "iphone 8",type: ["黑色","白色"]},
+                {name: "iphone 7 plus",type: ["红色"]},
+                {name: "iphone x",type: ["粉色"]}
+            ],
+            school: {
+                Name: "珠峰培训",
+                Age: 8,
+                Address: "回龙观东大街"
+            }
+        }
+    });
+
+</script>
+</body>
+</html>
