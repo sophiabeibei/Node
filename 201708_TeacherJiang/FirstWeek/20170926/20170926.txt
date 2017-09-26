@@ -49,7 +49,46 @@
         6.ajax获取: 叫vue-resource/axios(很像ajax)
         最基础的要学vue,还要学vue-router,还要学vuex,还要学vue-cil,还要学axios = vue全家桶(总体讲);
 
+    vue由很多部分组成,可以随意选择搭配;(必须得有vue);组成自己想要的框架
 
+为什么学vue?
+    1.面试要问;
+    2.用js(分为DOM和BOM),操作dom很好性能;vue有个特点叫数据驱动,它不建议直接操作dom,它操作的是数据;
+        有了vue之后,以后再也不会有document.getXxx...;vue虚拟dom,在内存中创建一个表示dom结构的对象,当需要渲染时将这个对象映射(转化)成dom;
+
+MVC: 数据模型(单向);      MVC设计框架
+    MVC: model view controller
+    model: 模型
+    view: 视图
+    controller: 控制器
+
+MVVM: 双向数据绑定(双向);双向的过程里,数据变化会影响视图,视频变化会影响数据;
+    model: 模型
+    viewModel: 中间层;时刻监视着页面能变化(输入)的部分;能改视图的,常见的是"表单元素"(双向);
+    只有表单才支持双向数据绑定;
+
+下载vue包
+    用vue之前,先下载要给包;
+    npm: node package manager;
+    1.npm init -y
+        创建初始化
+    npm install
+        安装
+        vue有两个版本;2.0    1.0;一般都用2.0;
+
+
+    npm install vue --save--dev
+    npm install vue --save
+    npm info ...   ...的信息,版本;例如:
+        npm info vue
+            vue的信息,版本;
+
+
+表单元素
+    1.可以实现双向数据绑定
+
+    2.指令属性
+        v中指令就是要给行间属性,而且必须以"v-"开头;一种时官方提供的;另一种就是自定义的;
 
 
 

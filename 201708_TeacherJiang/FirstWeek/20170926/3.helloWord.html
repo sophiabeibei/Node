@@ -4,11 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>3.helloWord</title>
+    <title>3.helloWord单向绑定</title>
 </head>
 <body>
+<div id="app">
+    <!--{{}}: 取值表达式;叫小胡子语法(moustache语法);-->
+    <p>{{msg}}</p>
+    <p>{{school.name}} {{school.age}} {{school.phone}}</p>
+</div>
+<!--使用vue,有两种方式:
+    1.直接引用
+    2.工程化
+
+    你使用vue会给你一个Vue(类)
+
+    -->
 
 
+<script src="Vue/node_modules/vue/dist/vue.js"></script>
+<script>
+    //->1.需要一块json;2.还需要一个位置(承载这些数据)
+    //->vm: viewModel
+    let vm = new Vue({
+        //->el: Elment
+        el: "#app",//->是一个选择器querySelector(不兼容IE8以下(包括IE8));不能选择body或者html;
+        data: {//->所有数据都要先声明一下;这个data最终会被这个实例代理;这个数据会放在vm上;通过vm.msg
+            msg: "hello world sophia",//->一定要先声明,再用;  这个放的是字符串
+            //jiangwen
+            school: {name: "sophia",age: 8}
+            //school: {name: "sophia",age: 8,phone: ""}//->加phone的第一个方法: 直接写在对象里;
+        }
+    });
+    //->可以通过修改数据,来更改视图;
+    //->我们管new Vue叫根实例(vm);new Vue的过程一般只有一个;
+    //->在控制台输入"vm.msg",得到的结果就是msg中的内容"hello world sophia";
+    //->在控制台输入[vm.msg = "xueBeiBei"];得到的结果就是"xueBeiBei"
 
+    //->加phone的第二个方法
+    //->如果当前属性声明时不存在,新增的属性不会导致视图变化;如果后增加的属性需要使用方法: $set方法;
+    vm.$set(vm.school,"phone","13810363110");
+
+    //->第三个方法: 替换掉原有属性(覆盖原来的属性);
+    vm.school = {name: "xxx",age: 10,address: "rrr"};//->把以前的对象完全覆盖掉;经常不用;替换掉原有属性;耗性能;
+
+
+</script>
 </body>
 </html>
