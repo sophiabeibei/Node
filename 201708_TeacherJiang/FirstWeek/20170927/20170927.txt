@@ -11,11 +11,10 @@
                                    {checked: false,productName: "Vue.js前端开发,快速入门与专业应用",productPrice: "36.6",productCount: []}
                                ])
 
-
-
-
-    assign方法
-
+    新加文本格式:
+        在文件右击,选择edit file template-> + -> 名字和扩展名
+        1.filters方法
+        2.assign方法
 
 
 二.事件修饰符(vue)
@@ -25,6 +24,15 @@
         .capture: 捕获行为(addEventListener("click",fn,true))
         .self: 这个事件只在自己身上触发(e.target || e.srcElement)
         .once: 绑定触发一次;
+
+
+三.vue方法
+    1.v-bind
+        1.:class
+        2.:style
+    2.computed(和data是平级的)
+    3.watch
+    4.method
 
 
 
