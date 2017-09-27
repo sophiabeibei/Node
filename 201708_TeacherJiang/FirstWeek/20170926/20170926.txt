@@ -96,6 +96,28 @@ MVVM: 双向数据绑定(双向);双向的过程里,数据变化会影响视图,
 
 
 
+package.json文件
+    {
+      "name": "Vue",
+      "version": "1.0.0",
+      "description": "",
+      "main": "index.js",
+      "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+      },
+      "keywords": [],
+      "author": "",
+      "license": "ISC",
+      "dependencies": {
+            //->初始化是为了安装这两个文件;    初始化执行命令    npm init -y
+        "bootstrap": "^3.3.7",
+        "vue": "^2.4.4"
+      }
+    }
+
+Ajax获取的库(vue-resource/axios)执行命令
+    npm install vue bootstrap vue-resource --save
+
 
 package-lock.json文件: 记录安装的版本号;
     {
