@@ -114,7 +114,7 @@ package-lock.json文件: 记录安装的版本号;
 
 
 指令directive
-    1.v-model: 双向绑定;
+    1.v-model: 双向绑定;(input[type="xxx" textarea])
 
     2.v-once: 绑定一次;
 
@@ -142,9 +142,6 @@ bootstrap
     1.安装bootstrap执行命令:
         npm install bootstrap --save
         最新版本: @3.3.7
-
-
-
 
 
 
