@@ -5,6 +5,15 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>绑定</title>
+    <style>
+        .background{
+            background: orange;
+        }
+        .fontSize{
+            font-size: 20px;
+        }
+
+    </style>
 </head>
 <body>
 <div id="app">
@@ -19,6 +28,12 @@
     <!-- 一个用对象;n个用数组;但是也支持原生的写法;   :style支持对象的写法和数组的写法-->
     <div :style="[c,b]">红</div>
     <div :style="sty">大人</div>
+
+    <!-- 通过boolean类型,使其判断样式是否生效-->
+    <div :class="{background: true,fontSize: true}">样式</div>
+
+    <!-- 数值中写的类名都会生效-->
+    <div :class="['background',{fontSize: true}]">对象套数组的样式</div>
 </div>
 
 <script src="Vue/node_modules/vue/dist/vue.js"></script>
