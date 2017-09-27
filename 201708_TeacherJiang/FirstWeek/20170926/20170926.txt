@@ -120,20 +120,22 @@ package-lock.json文件: 记录安装的版本号;
 
     3.v-html: 展示成html;
 
-    4.v-text: 可以解决闪烁问题(解决单行闪烁);
+    4.v-text: 可以解决单行闪烁问题(解决单行闪烁);
         {{}}: 是v-text的简写;
 
-    5.v-for: 循环;
+    5.v-for: 循环;(循环数组,对象,字符串....)
         v-for="value in ary"
         v-for="(item,index) in ary"
 
     6.v-cloak: 解决闪烁问题;
 
-    7.v-if
+    7.show(操作的是样式)
 
-    8.v-else-if
+    8.v-if(操作的是dom)
 
-    9.v-else
+    9.v-else-if
+
+    10.v-else
 
 
 http://v3.bootcss.com
