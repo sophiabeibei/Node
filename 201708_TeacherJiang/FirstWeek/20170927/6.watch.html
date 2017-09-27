@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>6.watch观察</title>
+</head>
+<body>
+
+<!-- methods computed和watch的区别:
+    监控一个数据的变化(很纯粹,就是执行一件事),可以实现异步的方法
+-->
+<div id="app">
+    <button @click="change1">变不开心</button>
+    <button @click="change2">变开心</button>
+</div>
+
+<script src="Vue/node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: "#app",
+        data: {
+            heart: "美丽"
+        },
+        //->监控heart;写个heart函数;和要监控的数据必须相同名字
+
+        watch:{
+            /*heart(){
+                setTimeout(function () {
+                    alert("你变了");
+                },3000)
+            }*/
+
+            /*跟上面的方法同样;*/
+            header:{
+                //->默认会调用handler()方法;
+                handler(){
+                    setTimeout(function () {
+                        alert("你变了");
+                    },3000)
+                }
+            }
+        },
+        methods:{
+            change1(){this.heart="不开心";},
+            change2(){this.heart="开心";},
+        }
+    });
+</script>
+
+</body>
+</html>
