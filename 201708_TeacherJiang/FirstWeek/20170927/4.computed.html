@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>计算属性computed</title>
+    <link rel="stylesheet" href="Vue/node_modules/bootstrap/dist/css/bootstrap.css">
+
+</head>
+<body>
+<div id="app">
+    <div class="container">
+        <table class="table table-bordered">
+            <tr>
+                <th><input type="checkbox" v-model="all">全选</th>
+                <th>价格</th>
+                <th>数量</th>
+            </tr>
+            <tr v-for="product in products">
+                <td><input type="checkbox" v-model="product.isSelected"></td>
+                <td><input type="text" v-model="product.productPrice"></td>
+                <td><input type="text" v-model="product.productCount"></td>
+            </tr>
+            <tr>
+                <!-- colspan: -->
+                <td colspan="3">总价{{sum}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<script src="Vue/node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: "#app",
+        data: {
+            name: "world",
+            products: [
+                {isSelected: true, productPrice: 100, productCount: 1},
+                {isSelected: true, productPrice: 300, productCount: 1},
+                {isSelected: true, productPrice: 200, productCount: 1}
+            ]
+        },
+        //->computed: 计算属性,看似是属性,但是写的时候是方法;  computed是根据数据计算出来的;
+        computed: {
+            all:{
+                //=>全选时根据每个人的状态获取而来的;
+                //->get获取的时候影响自己;
+                get(){
+                    return this.products.every(item=>item.isSelected)
+                },
+                //=>当设置全选或者反选,会影响其它的值;
+                //->设置的时候影响别人;
+                set(val){
+                    this.products.forEach(item=>item.isSelected=val);
+                }
+            },
+            //->sum(): 默认只根据价格和数量有关,其它变化不会导致属性重新计算;默认调用的是get方法;
+            /*sum(){
+                return this.products.reduceRight((prev, next) => {
+                    return prev + next.productPrice * next.productCount
+                }, 0)
+            }*/
+
+            /*等价于上面的sum()方法;*/
+            sum:{
+                get(){
+                    return this.products.reduceRight((prev, next) => {
+                        return prev + next.productPrice * next.productCount
+                    }, 0)
+                },
+                //->set(): 当给sum赋值时,会调用此方法;
+                set(val){
+                    console.log(val);
+                }
+            }
+        },
+        methods: {
+
+        }
+    });
+</script>
+
+</body>
+</html>

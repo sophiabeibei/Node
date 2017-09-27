@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>5.计算属性computed</title>
+    <link rel="stylesheet" href="Vue/node_modules/bootstrap/dist/css/bootstrap.css">
+
+</head>
+<body>
+<div id="app">
+    <!-- 需求: 校验输入框中的内容不能小于6位;不能大于8位;-->
+    <input type="text" v-model="username">
+    <div>{{validate}}</div>
+</div>
+
+<script src="Vue/node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: "#app",
+        data: {
+            username: ""
+        },
+        //->计算属性computed: 值是计算而来的;
+        computed: {
+            validate(){
+                if(this.username.length<6){
+                    return "小于6位";
+                }
+                if(this.username.length>8){
+                    return "大于8位";
+                }
+                return "通过";
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
