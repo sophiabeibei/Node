@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>1.cart</title>
+    <link rel="stylesheet" href="Vue/node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+        html,body{
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+<!-- bootstrap: 颜色;
+    默认是灰色;
+    警告: 黄色;
+    危险: 红色;
+    成功: 绿色;
+    primary: 深蓝色
+    info: 浅蓝色
+
+-->
+<div id="app">
+    <!--<div class="container">
+        <table class="table table-bordered">
+            <caption class="h2 text-center">商品列表</caption>
+            <tr class="text-danger">
+                <th class="text-center">全选</th>
+                <th class="text-center">商品</th>
+                <th class="text-center">单价</th>
+                <th class="text-center">数量</th>
+                <th class="text-center">小计</th>
+                <th class="text-center">操作</th>
+            </tr>
+            <tr class="text-center">
+                <td><input type="checkbox"></td>
+                <td>Vue.js前端开发,快速入门与专业应用</td>
+                <td>36.6</td>
+                <td><input type="text"></td>
+                <td>$300</td>
+                <td><button class="btn btn-danger glyphicon glyphicon-backward"> 删除</button></td>
+            </tr>
+        </table>
+        <form>
+            <div class="form-group">
+                <label for="productName" class="control-label">商品名称</label>
+                <input type="text" id="productName" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="productPrice" class="control-label">商品价格</label>
+                <input type="text" id="productPrice" class="form-control">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" type="button">添加</button>
+            </div>
+        </form>
+    </div>-->
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <caption class="h2 text-danger text-center">购物列表</caption>
+                <tr>
+                    <th class="text-center">全选 <input type="checkbox" v-model="selectAll" @click="all"></th>
+                    <th class="text-center">商品</th>
+                    <th class="text-center">单价</th>
+                    <th class="text-center">数量</th>
+                    <th class="text-center">小计</th>
+                    <th class="text-center">操作</th>
+                </tr>
+                <tr v-for="(product,index) in products">
+                    <td><input type="checkbox" v-model="product.checked" @click="checkOne"></td>
+                    <td>{{product.productName}}</td>
+                    <td>{{product.productPrice}}</td>
+                    <td><input type="text" v-model="product.productCount"></td>
+                    <!--<td>{{(product.productPrice*product.productCount).toFixed(2)}}</td>-->
+                    <td>{{product.productPrice*product.productCount | toFixed(1,"$")}}</td>
+                    <td><button @click="remove(product)">删除</button></td>
+                </tr>
+            </table>
+            <form>
+                <div class="form-group">
+                    <label for="productName" class="control-label">商品名称</label>
+                    <input type="text" id="productName" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="productPrice" class="control-label">商品价格</label>
+                    <input type="text" id="productPrice" class="form-control">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" type="button">添加</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="Vue/node_modules/vue/dist/vue.js"></script>
+
+<script src="Vue/node_modules/vue-resource/dist/vue-resource.js"></script>
+<!-- vue-resource: 它会将一个$http属相挂在vm上;-->
+
+<script>
+    let vm = new Vue({
+        el: "#app",
+        //->filters: 过滤器;改变展示的结果,而且可以实现共用;
+        filters:{
+            toFixed(input,param1,param2){
+                //->input: 代表的是"|"前面的结果,返回值则是最终展现的结果;
+                return param2 + parseFloat(input).toFixed(param1);
+            }
+        },
+        created(){//->created: 创建完成;指的是vm创建完成后;相当于数据和方法已经被声明好了;在created这里,获取数据;特点: 这个方法我们叫钩子方法;
+
+            this.$http.get("./products.json").then(function (res) {//->res: 第一个函数是成功success;
+                //->this: 实例;
+                //->vue-resource: 将this改成了实例;
+                this.products = res.body;
+                //->数据获取成功后,判断以下是否应该"全选"
+                this.checkOne();
+            },(err)=>{//->err: 第二个函数是失败error;
+
+            });
+        },
+        data: {
+            products: [],
+            selectAll: false//->应该不是默认为false
+        },
+        methods: {
+            //->实现全选的逻辑,如果selectAll为true;其他人都为true;如果为false,都为false;
+            all(){
+                this.products.forEach(item=>item.checked=this.selectAll);
+            },
+            //->选择某个,有一个为false,则结果就是false;如果全部的都为true,则"全选"也为true;
+            checkOne(){
+                //->这个数据是异步过来的;
+                this.selectAll = this.products.every(item=>item.checked);
+            },
+            remove(product){
+                //->product: 代表的就是某一项点击的
+
+                //->filter: 过滤器
+                this.products = this.products.filter((item)=>item!==product);
+            }
+        }
+    });
+</script>
+</body>
+</html>

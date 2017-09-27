@@ -1,0 +1,34 @@
+Ajax获取的库(vue-resource/axios)执行命令
+    npm install vue bootstrap vue-resource --save
+
+
+
+JSON.stringify([
+                               {checked: false,productName: "Vue.js前端开发,快速入门与专业应用",productPrice: "36.6",productCount: []},
+                               {checked: false,productName: "Vue.js前端开发,快速入门与专业应用",productPrice: "36.6",productCount: []},
+                               {checked: false,productName: "Vue.js前端开发,快速入门与专业应用",productPrice: "36.6",productCount: []}
+                           ])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
