@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>绑定</title>
+</head>
+<body>
+<div id="app">
+    <!--<p v-bind:title="title">哈哈哈</p>-->
+
+    <!-- 可以省略v-bind-->
+    <p :title="title">哈哈哈</p>
+
+    <!-- ":",表示动态绑定,对应的值,直接就是变量;如果要写字符串,需要加单引号;注意: ":height="1",1就变成了数字类型;"    ":height="true"就是布尔类型;"-->
+    <img :src="src" alt="" :width="'50px'" :height="'50px'">
+
+    <!-- 一个用对象;n个用数组;但是也支持原生的写法;   :style支持对象的写法和数组的写法-->
+    <div :style="[c,b]">红</div>
+    <div :style="sty">大人</div>
+</div>
+
+<script src="Vue/node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: "#app",
+        data: {
+            sty: "background: yellow;color: blue",
+            c: {background: "red"},//->对象
+            b: {color: "green"},//->对象
+            title: "我很美",
+            src: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1506498246446&di=0db40226cea6f5ad649228006a16424f&imgtype=0&src=http%3A%2F%2Fcdn.duitang.com%2Fuploads%2Fitem%2F201506%2F21%2F20150621170158_jaMwP.jpeg"
+        }
+    });
+</script>
+
+</body>
+</html>
