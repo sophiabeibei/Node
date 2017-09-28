@@ -12,11 +12,18 @@ let vm = new Vue({
     data: {
         todos:[],
         todo:{select: false,title:""},
-        cur: {}
+        cur: {},
+        newObj: {}
     },
     methods:{
+        //->当取消的时候,cur清空;和任何人都比较位false;所以不显示输入框;
+        cancle(){
+            this.cur = {};
+        },
+        //->为了让输入框的内容和span中相同,但是不是同一个;
         saveCurrent(todo){
-            this.cur = todo;
+            Object.assign(this.newObj,todo);
+            this.cur = todo;//->目的: 将todo克隆一份,给cur;克隆的和以前todo长的一样,但是没有任何关系;
         },
         add(){
             this.todos.push(this.todo);
