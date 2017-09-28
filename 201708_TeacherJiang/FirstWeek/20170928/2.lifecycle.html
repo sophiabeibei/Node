@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>生命周期</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+
+</head>
+<body>
+
+
+<div id="app">
+    <p></p>
+    <div></div>
+</div>
+
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+
+    /* 这就是完整的生命周期,把它背下来;*/
+    let vm = new Vue({
+        //el: "#app",
+
+        //->vue 中自带的方法
+        beforeCreate(){console.log(this.a)},//->一般用不到,这里不能拿到数据和方法;
+        created(){console.log(this.a)},//->获取数据,方法和数据已经挂载再实例上了;
+        beforeMount(){},//->此函数挂在之前执行;没有应用场景;
+        //->等待dom渲染完成后,再操作dom;等待渲染完成后获取真实dom;dom渲染是异步的;
+        mounted(){},//->可以获取真实的dom元素;(created是获取数据;在mounted里也可以获取数据,但一般都在created中获取);
+        beforeUpdate(){console.log(1)},//->dom更新前会触发这个事件;可以做一个全局数据的监控;一般只监控某一个,一般用watch;
+        beforeDestroy(){},//->一般清空定时器,或者移除自定义函数(肯定不会手动调用$destroy方法;例如以下测试vm.$destroy(););
+        destroyed(){},
+        data: {a:1,b:2},
+        methods:{},
+        template:"<div>{{a}}</div>",//->如果内部有模板,就不会使用外部模板;1.外部模板: body中的标签;2.内部模板: template这里写的标签;
+    }).vm.$mount("#app");//->vm.$mount("#app") 和 el: "#app"是一样的意思;两个写一个就行;    vm.$mount("#app")这个叫手动挂在
+    //vm.$destroy();//->移除所有的监听和观察者;孩子组件;
+
+    //->双向绑定内部靠的就是Object.defineProperty
+</script>
+
+</body>
+</html>

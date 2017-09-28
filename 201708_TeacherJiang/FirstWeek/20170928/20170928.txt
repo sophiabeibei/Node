@@ -8,18 +8,33 @@
 
 
 
+有几个方案
+
+实现路由跳转的两种方式:
+    1.hash值: 可以实现路由;不同的路径可以返回不同的结果;
+        单引用
+        window.location.href(强制让链接跳转)
+        会导致路径出现#;
+        开发时可以使用hash值这种方式;
+
+    2.h5: history;
+        browserHistory,不会出现#,但是刷新会导致404错误;上线时我们可以通过服务端来解决这种404问题;
+        这种方法叫history.pushState;
 
 
 
 
 
+10名90后买商品住宅
 
 
+取路径
+window.location.href
+
+window.location是个对象;
 
 
-
-
-
+https://cn.vuejs.org/v2/guide/instance.html
 
 
 
