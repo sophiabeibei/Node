@@ -90,6 +90,8 @@
 
                /*0,0: 是坐标;*/
                //->ref = "img": 表示给dom起名字,可以通过this.$refs获取到真实的dom;
+               //->setDragImage: 设置拖拽的图片;
+               //->this.$refs.属性名ref=
                e.dataTransfer.setDragImage(this.$refs.img[index],0,0);
            },
             //->drop: 松手事件;松手的时候将当前项放到数组中;
