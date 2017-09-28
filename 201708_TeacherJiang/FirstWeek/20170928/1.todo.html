@@ -6,10 +6,19 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>案例: 去做</title>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+        .del {
+            text-decoration: line-through;
+            color: lightsalmon;
+        }
 
+        [v-cloak] {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-<div id="app">
+<div id="app" v-cloak>
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -24,16 +33,21 @@
                 <div class="col-md-8 col-md-offset-2">
                     <div class="panel panel-info">
                         <div class="panel-heading">
-                            <p class="h3 text-warning">亲,你还有 X 件事需要完成</p>
-                            <input type="text" class="form-control">
+                            <p class="h3 text-warning">亲,你还有 {{count}} 件事需要完成</p>
+                            <input type="text" class="form-control" v-model="todo.title" @keyup.13="add()">
                         </div>
                         <div class="panel-body">
                             <ul class="list-group">
-                                <li class="list-group-item">
-                                    <input type="checkbox">
-                                    <span>回家吃饭</span>
-                                    <!-- pull-right: 相当于float: right;-->
-                                    <button class="btn btn-danger btn-xs pull-right">&times;</button>
+                                <li class="list-group-item" v-for="todo in todos">
+                <!-- @dblclick="saveCurrent()" : 点击谁,就把当前这个记住;用当前这个和每一项比较;如果相等则表示的是当前的这一项,让输入框显示出来即可;-->
+                                    <div @dblclick="saveCurrent(todo)" v-show="cur!==todo">
+                                        <input type="checkbox" v-model="todo.select">
+                                        <span :class="{del:todo.select}">{{todo.title}}</span>
+                                        <!-- pull-right: 相当于float: right;-->
+                                        <button @click="remove(todo)" class="btn btn-danger btn-xs pull-right">&times;
+                                        </button>
+                                    </div>
+                                    <input type="text" v-model="todo.title" v-show="cur===todo">
                                 </li>
                             </ul>
                         </div>
