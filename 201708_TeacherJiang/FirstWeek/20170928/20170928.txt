@@ -1,0 +1,35 @@
+一.计划表案例
+    npm init -y
+
+
+    npm install vue bootstrap axios --save
+
+    先读取一个文件,读完后将内容输出;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

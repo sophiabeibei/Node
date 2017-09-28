@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>案例: 去做</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+
+</head>
+<body>
+<div id="app">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">导航</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- col-md-offset-3: 偏移2列-->
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <p class="h3 text-warning">亲,你还有 X 件事需要完成</p>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <input type="checkbox">
+                                    <span>回家吃饭</span>
+                                    <!-- pull-right: 相当于float: right;-->
+                                    <button class="btn btn-danger btn-xs pull-right">&times;</button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <ul class="nav nav-pills">
+                                <li class="active"><a href="#">全部</a></li>
+                                <li><a href="#">未完成</a></li>
+                                <li><a href="#">已完成</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<!-- vue-resource是基于promise;axios它也是基于promise;
+    vue-resourse支持jsonp;axios不支持jsonp;
+    axios可以再服务端使用;axios并没有挂在vue的实例上;
+-->
+<script src="node_modules/axios/dist/axios.js"></script>
+<script src="todo.js"></script>
+</body>
+</html>
