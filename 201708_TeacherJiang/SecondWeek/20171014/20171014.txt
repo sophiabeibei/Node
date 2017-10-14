@@ -79,21 +79,93 @@
 
 
         git merge dev(分支名): 在master上合并dev;
+        默认会将分支上所有提交的内容全部合并;
+
+
+        针对提交过一次的信息,第二次提交可连写,如下:
+        git commit -a -m"add wo zai shang ke"
+
+        提交到谁的身上,本次的结果才归某个分支所有;
+
+
+        可以按照以下顺序操作一遍进行练习:
+        260  mkdir git-pro1
+        261  cd git-pro1
+        262  git init
+        267  git branch
+        268  git checkout -b dev
+        269  git branch
+        270  git checkout master
+        272  git checkout -b master
+        273  git branch
+        274  touch index.txt
+        275  git add .
+        276  git commit -m 'index.txt'
+        278  git checkout -b dev
+        279  vi index.txt
+        280  git commit -a -m"add zfpx"
+        282  git checkout master
+        283  git merge dev
+        284  cat index.txt
+        286  git checkout dev
+        287  vi index.txt
+        288  cat index.txt
+        289  git checkout master
+        290  cat index.txt
+        292  git checkout dev
+        293  git add .
+        294  git checkout dev
+        295  git checkout master
+        297  cat index.txt
+        298  git checkout dev
+        299  git commit -m 'add hello'
+        301  git checkout master
+        302  cat index.txt
+        303  git checkout dev
+        304  vi index.txt: 编辑index.txt文件;
+        306  git checkout master
+        308  git commit -a -m 'add world': 针对提交过一次的信息,第二次提交可连写;
+        309  git checkout master
+        310  cat index.txt 查看index.txt文件的内容;
+        312  git log
+        314  git checkout dev: 切换dev分支;
+        316  git log
+        318  git checkout master: 切换master分支;
+        319  git merge dev: 在master分支上合并dev分支的内容
+        320  git log: 查看git操作的日志;
+        322  git branch -D dev: 删除dev分支
+
+
+        查看图表
+        git log --graph
+
+        查看图表
+        git log --graph --online
 
 
 
+        必须是历史区的结果
+        执行命令
+            git add
+            git commit -m""
+            git remote add origin +仓库地址;
+                git remote -v查看远程链接的仓库
+                git remote rm +仓库名: 删除指定的仓库;
+            git push -u origin master: 推送到分支master上; -u: 下次再推送可以省略origin master这两词;
+
+        .gitignore: 放.idea等文件名;过滤不需要推送的文件名;
+        .gitkeep: git的保留;
 
 
-
-
-
-
-
-
-
-
-
-
+        发布静态网站
+            1.要求有一个固定的分支(这个分支名不能更改gh-pages)
+            2.将静态内容推送到这个分支上;
+            3.创建分支
+                git checkout -b gh-pages
+                touch index.html
+                git add .
+                git commit -m"描述"
+                git push origin gh-pages
 
 
 
