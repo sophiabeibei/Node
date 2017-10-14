@@ -17,13 +17,32 @@
     3.可以实现历史穿越;
     4.github开源,多端共享
     5.团队协作;
-    6.
-    7.
-    8.
-    9.
 
     linus开发的是linux系统,开发git后可以实现自动合并代码;比较diff(不同);
 
+
+    使用git
+    1.界面化操作gui(source tree 编辑器自带git功能)
+    2.命令行操作cli
+
+    mac下
+    1.iterm2工具+oh-my-zsh工具
+    2.如果安装过xcode,会自动安装git
+
+    查看git版本
+    git --version
+
+    linux命令
+    0.mkdir 文件名: 创建文件;
+    1.pwd: print working directory打印当前
+    2.rm -rf .git(删除文件夹)
+    3.ls: list show显示所有列表
+    4.cd: change directory改变目录
+    5.touch: 创建一个空文件    touch index.txt
+    6.vi 文件名: 编辑文件      vi index.txt
+        1.i: 插入模式             按i键之后,出现"插入"可编辑文件的内容;
+        2.esc键+:wq 保存并退出;
+    7.cat 文件名: 查看文件内容;
 
 
 
