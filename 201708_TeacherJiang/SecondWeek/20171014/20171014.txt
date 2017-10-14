@@ -49,6 +49,41 @@
     git不能直接将工作区的内容推送到历史区;git会将需要的文件放在.git下;
     svn没有过渡区;svn一提就提到历史区;并且svn每个文件下都有一个.svn文件;
 
+    git命令
+        git status: 查看信息状态  如果是红色表示未添加到暂存区;
+        git add .或者-A或者加文件名: 提交到暂存区;
+        git commit -m"描述更新的内容": 添加到历史区(版本库);
+        git log: 查看git所有的日志(版本id);
+
+        git diff: 比较某个区的不同;
+            工作区 <--> 暂存区: git diff
+            暂存区 <--> 历史区: git diff --cached
+            历史区 <--> 工作区: git diff master(分支名,一般是master)
+        git checkout .: 将所有的文件从暂存区回滚到工作区;
+        git reset HEAD index.txt(文件名): 回到上一次暂存区的东西;
+
+        history >1.txt: 把历史命令导出到1.txt文件中;
+
+        git log;从这里选择一段代码;: 可以看到所有的版本号;
+        git reset --hard 随便粘贴一段代码(版本号): 回滚历史区;
+
+
+        git reflog: 查看所有的版本号;
+
+        git branch dev: 创建分支;
+        git branck D 分支名: 删除分支(不能在当前分支上)
+        git checkout -b 分支名: 创建并切换分支;
+
+        在分支上添加文件
+            需要提交后才能归这个分支所有,否则你改的只是工作区内容;
+
+
+        git merge dev(分支名): 在master上合并dev;
+
+
+
+
+
 
 
 
