@@ -55,6 +55,169 @@ node基础
 
 
 
+commonjs模块化
+    commonjs规范: 规定的模块化风格;
+
+    模块化的好处:
+    1.防止命名冲突;
+    2.提高代码复用性;
+    3.高内聚低耦合;
+    4.分工协作,统一代码风格,方便代码维护;
+
+    1.定义如何创建模块: 每个js都是一个模块;
+    2.如何导入一个模块: require导入一个模块;
+    3.如何导出一个模块: exports/module.exports;
+
+
+    模块分为三类:
+        1.文件模块;
+        2.第三方模块;
+        3.
+
+
+    文件模块:
+        特点: 引用的时候必须加./;可以省略.js后缀;可以省略.json后缀,可以省略.node后缀;但一般都写上不去省略;引用多次,只会执行一次(默认会缓存);
+
+    第三方模块:
+        特点: 必须下载;
+
+        1.全局第三方模块:
+            特点: 在命令行使用;
+            npm install: 通过这个下载;
+            2.taobao源;
+            3.cnpm源;
+            安装一个模块
+            npm install nrm -g: node的源管理工具;
+            nrm ls: 查看所有源;
+            nrm use taobao: 使用taobao源;
+            nrm test: 测网速;
+            npm root -g: 查看全局安装位置;
+            npm config list: 查看配置列表;
+
+        http-server
+        npm install http-server -g:
+        http-server: 选择需要启动服务的文件夹执行即可;
+
+        简易版的xmpp
+
+        2.本地第三方模块
+            特点: 在项目中使用;
+            进入文件夹,再初始化;
+            初始化package.json: 记录安装的依赖有哪些;
+
+            1.开发依赖: 只在开发时使用;
+            2.项目依赖: 开发上线都需要;
+
+
+            1.开发依赖:
+                npm install less --save-dev: 保存为开发依赖;
+                npm install: 跑环境;
+
+            2.项目依赖:
+                npm install jquery
+                npm install jquery@3.2.1
+
+            yarn安装(安装第三方软件)
+                npm install yarn -g:
+                yarn init
+                yarn add jquery: 项目依赖
+                yarn add less --dev: 开发依赖
+                yarn install: 跑环境;安装所有依赖;
+
+
+
+            往npm上发布包;
+            发布包: 包由多个模块组成;
+                1.指定一个入口文件;package.json中main对应的文件;创建一个main.js;里面写的内容,最后要导出(三种方式);
+                2.需要有package.json文件;
+                3.要有readme.md文件;写上包的作用;
+                4.入口文件,package.json => main文件;
+                5.进入到需要发布的文件夹内;
+                6.切换到国外源;保证发布到npm上去;
+                7.注册或者登录用户;
+                npm addUser回车  不要在gitbash下操作;
+                8.发布到npm: npm publish
+
+            删除发布的包
+                npm unpublish --force回车
+
+            重新发布包,要提升版本;
+
+        module.paths: 查找模块的路径;如果当前目录下没找到,则会去上级目录查找;直到找到根目录为止;找不到就报错;
+        console.log(module);
+        //exports require module
+        //__filename 当前文件的绝对路径
+        //__dirname 当前文件夹的绝对路径
+        console.log(__filename,__dirname);
+
+        内置模块
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
