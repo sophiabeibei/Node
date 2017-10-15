@@ -167,6 +167,19 @@
                 git commit -m"描述"
                 git push origin gh-pages
 
+            拉去最新代码
+
+            强制推送本地的代码
+            git push origin master --force
+
+            在推送时可能需要先拉取远程的内容,合并后再次推送,如果产生冲突,需要解决冲突;
+
+            fork(叉子)
+            1.fork来的代码,如果别人更新了,不会影响我fork的代码(因为fork的是当时的);
+            2.将fork的代码改正后,发送合并请求,请求别人帮我们合并;
+
+
+
 
 
 
