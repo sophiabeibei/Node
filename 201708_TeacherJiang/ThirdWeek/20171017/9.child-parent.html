@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>9.child-parent</title>
+</head>
+<body>
+<div id="app">
+    父亲: {{color}}
+    <!-- this.$on("child-fn",changeColor): 相当于下面的写法;this: 指的时child; 给子组件绑了一个监听函数,这个监听函数是父类的;
+
+            this.$emit("child-fn","blue")
+
+    -->
+    <child :color="color" @child-fn="changeColor"></child>
+</div>
+
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+
+    new Vue({
+        el: "#app",
+        data:{color: "red"},
+        methods:{
+            changeColor(val){//->val: val是儿子触发父组件函数时传递的参数
+                this.color = val;
+            }
+        },
+        components: {
+            child:{
+                methods:{
+                    update(){
+                        this.$emit("child-fn","blue");
+                    }
+                },
+                template:"<div>儿子: {{color}} <button @click='update'>变蓝</button></div>",
+                props:{
+                    color:{
+                        type: String,
+                        default:"yellow"//->default不能和validate一起使用;
+                    }
+                }
+            }
+        }
+    });
+
+//->父传子: 通过属性;子传父: 通过事件;
+    //->.sync 修饰符: 可以实现数据同步;
+
+
+</script>
+</body>
+</html>

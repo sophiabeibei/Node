@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>10.child-parent</title>
+</head>
+<body>
+<div id="app">
+    父亲 {{msg}}
+    <!-- <child :msg="msg" @update:fn="val=>msg=val"></child>:  -->
+    <!--<input type="text" :value="val" @input="fn">-->
+    <child :msg.sync="msg" ></child>  <!-- 这是语法糖-->
+</div>
+
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+
+    new Vue({
+        el: "#app",
+        data: {msg:"hello"},
+        methods:{
+            fn(val){this.msg = val}
+        },
+        components: {
+            child:{
+                methods: {
+                    fn(){
+                        this.$emit("update:msg","blue");
+                    }
+                },
+                template:"<div>{{msg}} <button @click='fn'>变蓝</button></div>",
+                props: ["msg"]
+            }
+        }
+    });
+
+//->父传子: 通过属性;子传父: 通过事件;
+    //->.sync 修饰符: 可以实现数据同步;
+
+
+</script>
+</body>
+</html>

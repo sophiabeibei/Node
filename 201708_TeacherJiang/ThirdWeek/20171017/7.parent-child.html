@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>7.parent-child</title>
+</head>
+<body>
+<div id="app">
+    {{msg}}
+    <!-- :title: 冒号叫动态绑定;将值转化成了变量;-->
+        <!-- <child title=""></child> 这个算是传了,传了空-->
+        <!-- <child></child> 这个算是没传-->
+    <child :title="msg"></child>
+</div>
+
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    //->属性校验: 校验父类传递过来的属性;
+    let vm = new Vue({
+        el: "#app",
+        data:{msg: 100},
+        components: {
+            child: {
+                template: "<div>儿子要钱 {{title}}</div>",//->一般不采用数组方式,数组方式不能实现属性的校验;写个对象,如下
+                props: {//->props:["title"]
+                    title:{
+                        type: [Number,Boolean,Array,Object,String],
+                        default: "无",
+                        validator(val){//->val代表传递进来的值,如果返回true,通过返回;返回false不通过;
+                            return val>500;
+                        }
+                    },//->只有提示作用;是屏蔽不了代码执行;--这是校验类型;
+                },
+            }
+        }
+    });
+
+
+
+    ///-------------------------------------------------------
+    //->父组件如何调用子组件的方法??????008.html
+
+</script>
+</body>
+</html>

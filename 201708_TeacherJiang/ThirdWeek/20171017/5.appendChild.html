@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>5.appendChild</title>
+</head>
+<body>
+<div id="app">
+    <div></div>
+    <span></span>
+    <p></p>
+</div>
+
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    //->数据劫持 + compile + 发布订阅;
+    let root = document.querySelector("#app");
+    let fragment = document.createDocumentFragment();
+    while (child=root.firstChild){
+        fragment.appendChild(child);
+    }
+
+    console.log(fragment);
+
+
+    //->父作用域和子作用域共享数据???
+
+</script>
+</body>
+</html>

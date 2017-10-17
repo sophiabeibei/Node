@@ -1,2 +1,225 @@
 本周内容: 文件读写操作;
 http://www.zhufengpeixun/docs/html/node基础/文件操作.html
+
+一.spa框架
+    spa: 单页应用;一个页面;
+
+二.组件
+    负责切换;把一个复杂的页面拆分成若干个组件,最后再拼成一个完整的页面;
+
+三.组件的分类
+    页面级组件: home组件;list组件;一个个的页面是一个组件;
+    基础组件: 页面级组件包含基础组件;可复用的组件;
+
+    组件化开发的好处:
+        1.提高开发效率
+        2.方便重复使用
+        3.便于协同开发
+        4.更容易被管理和维护;
+
+四.Vue中的组件
+    vue中的组件是自定义的标签,可以扩展原生的html元素,封装可重用的代码;
+
+    组件的组成:
+        1.样式结构
+        2.逻辑行为
+        3.数据绑定
+
+五.定义组件-组件的使用
+    1.全局定义: 不需要在组件中再次声明;
+        注册后在任意实例的模板中均可使用;
+        <div id="app">
+        <zf-component></zf-component>
+        </div>
+        Vue.component("zf-component",{template:`<div>hello vuejs</div>`});
+
+    2.局部组件: 在某个组件中声明的;
+        在组件实例中通过选项注册,只有在所注册的作用域中使用;
+        var vu = new Vue({
+            el: "app",
+            components: {
+                "zf-component": {
+                    template: `<div>hello vuejs</div>`
+                }
+            }
+        })
+
+        执行npm i vue bootstrap axios命令之后,就有以下文件;
+            --要使用node_modules/vue/dist/vue.js文件;
+
+
+
+上午总结:
+    全局组件和局部组件的使用
+    局部组件的模板
+    组件中的数据必须是函数类型;
+    组件的嵌套
+    属性的传递
+    属性的验证;
+    父组件获取子组件的数据的方法;
+
+下午课程计划:
+    发布订阅...
+
+六.组件
+    组件就是自定义标签;
+
+    全局组件
+        Vue.component(tagName,options)
+
+
+        <div id="app">
+            <my-zfpx-component :a="1"></my-zfpx-component>
+        </div>
+        <script src="../node_modules/vue/dist/vue.js"></script>
+        <script>
+            let my = {
+                template: `<div>{{msg}}</div>`,
+                data(){return {msg: "hello"}}
+            };
+            Vue.component("my-zfpx-component",my);//->所有组件都是基于根实例的
+            new Vue({
+                el: "#app"
+            })
+        </script>
+
+    局部组件
+        不必把每个组件都注册到全局;把它写到某个实例上;
+
+        <div id="app">
+            <child></child>
+        </div>
+        <script src="../node_modules/vue/dist/vue.js"></script>
+        <script>
+            let vm = new Vue({
+                el: "#app",
+                components:{
+                    child: {
+                        template: "<div>儿子组件</div>"
+                    }
+                }
+            })
+        </script>
+
+        错误写法:
+        <div id="app">
+            <child1></child1>
+            <child2></child2>
+        </div>
+        <script src="../node_modules/vue/dist/vue.js"></script>
+        <script>
+            let obj = {a: 1};//->组件中不要使用同一个对象;
+            let vm = new Vue({
+                el: "#app",
+                components:{
+                    child1: {
+                        data(){return obj},
+                        template: "<div @click='a=a+1'>哥哥组件 {{this.a}}</div>"
+                    }
+                    child2: {
+                        data(){return obj},
+                        template: "<div>弟弟组件 {{a}}</div>"
+                    }
+                }
+            })
+        </script>
+
+
+        new Vue({
+            el: "#app",
+            components: {
+                child: {
+                    template: "<div>hello</div>"
+                }
+            }
+        })
+
+        data必须是函数,而且返回一个新的对象;
+
+    props父传递数据给子数据
+        1.作用域是独立的,互相不能访问;
+        2.给哪个组件传递属性就写在谁的身上;通过"冒号"传递,可以传递数字,变量,布尔类型;比如: title="1";
+        3.子组件需要显示声明在自己的props上;
+        4.属性的名字需要转换成驼峰命名法;
+        5.使用4种验证方法验证传递数据的方式
+
+        父传子案例
+            <div id="app">
+                <child :msg="'儿子'" a='1'></child>
+            </div>
+            <script>
+                //->数据永远是单向数据流;
+                let obj = {a: 1};//->组件中不要使用同一个对象;
+                let vm = new Vue({
+                    el: "#app",
+                    components:{
+                        child: {
+                            data(){//->如果想使用父级的数据,可以新声明一个结果,使用data;或者计算出一个新值;
+                               return {newMsg: this.msg};
+                            },
+                            computed:{
+                                b(){return this.a}
+                            },
+                            template: "<div><input type='text' v-model='newMsg'>{{b}}</div>",
+                            props: ["msg","a"]
+                        }
+                    }
+                })
+            </script>
+
+
+        kebab案例
+            <div id="app">
+                <child :msg="'儿子'"></child>
+            </div>
+            <script>
+                //->传递属性时,要采用驼峰命名法;
+                let obj = {a: 1};//->组件中不要使用同一个对象;
+                let vm = new Vue({
+                    el: "#app",
+                    components:{
+                        child: {
+                            template: "<div>{{msg-A}}</div>",
+                            props: ["msg"]
+                        }
+                    }
+                })
+            </script>
+
+
+        单向数据流: 不应该在子改父;
+
+    事件Event 子传父
+        1.在子组件上绑定自定义事件,对应的函数是父类的;
+        2.子组件触发自己的自定义事件;让父类函数执行;
+
+        子传父案例: child-parent
+            <div id="app">
+                {{count}}
+                <child @increment="val=>count=count+val" :count="count"></child>     <!-- val=>count=count+val: 就相当于是fn -->
+            </div>
+            <script src="node_modules/vue/dist/vue.js"></script>
+            <script>
+                let vm = new Vue({
+                    el: "#app",
+                    methods:{
+                        fn(val){
+                            this.count = this.count + val;
+                        }
+                    },
+                    data: {
+                        count: 1
+                    },
+                    components: {
+                        child: {
+                            methods: {
+                                fn(){
+                                    this.$emit("increment",1);
+                                }
+                            },
+                            template: "<div>儿子 {{count}} <button @click='fn'>+</button></div>",
+                            props: ["count"]
+                        }
+                    }
+                });
+        </script>

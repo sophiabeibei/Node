@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>4.template</title>
+</head>
+<body>
+<div id="app"></div>
+
+<!-- template中的内容会被转换成虚拟dom;虚拟dom: 文档碎片;原理: 先获取第一个元素,通过createElement创建一个元素;把每一个元素叫firstChild appendChild到这个dom元素里;-->
+<template id="parent">
+    <div>parent</div>
+</template>
+<template id="child">
+    <div>child</div>
+</template>
+
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    let child = {template: "#child"};
+    let parent = {
+        template: "#parent",
+        components: {
+            child
+        }
+    };
+    let vm = new Vue({
+        el: "#app",
+        template: "<parent></parent>",
+        components: {
+            parent
+        }
+    });
+
+</script>
+</body>
+</html>
