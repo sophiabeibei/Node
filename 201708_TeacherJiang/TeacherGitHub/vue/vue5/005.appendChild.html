@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  {{age}}
+  <div></div>
+  <span></span>
+  <p></p>
+</div>
+<script>
+  // 数据劫持 +  compile + 发布订阅 => MVVM
+  let root = document.querySelector('#app');
+  let fragment = document.createDocumentFragment();
+  while (child = root.firstChild){
+      fragment.appendChild(child)
+  }
+  console.log(fragment);
+
+</script>
+</body>
+</html>
