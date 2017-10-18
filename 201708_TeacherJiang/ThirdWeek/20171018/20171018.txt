@@ -1,0 +1,27 @@
+npm init -y
+    安装初始化
+npm install vue bootstrap vue-router axios
+    同时安装四个(vue bootstrap vue-router axios)
+
+
+
+组件传递的数据很麻烦,解决:
+    父传子: 通过属性;
+    子传父: 通过事件;
+    平级组件的传递:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

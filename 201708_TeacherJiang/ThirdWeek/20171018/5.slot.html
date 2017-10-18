@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>5.slot</title>
+    <style>
+        #mask{
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            position: fixed;background: rgba(0,0,0,.4);
+        }
+        .dialog{
+            position: fixed;
+            width: 450px;
+            height: 300px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+<!-- ui框架: mint ui(移动端); element ui;-->
+<!-- 具名slot;-->
+<div id="app">
+    <button  @click="visible=true">点我啊</button>
+    <!-- 例如: 别人写好的模态框组件,我们来使用;我们会先把别人的引入进来,传一些自己的内容;所以绑定的方法都是自己的;-->
+    <modal :show="visible" @close="cb">
+        <div>xxx hlup xxx</div>
+        <header slot="header">{{msg}}</header>
+        <footer slot="footer">此操作危险,需谨慎;</footer>
+        <div>xxx zfpx xxx</div>
+    </modal>
+    <botton @click="isShow=true">按钮</botton>
+    <modal :show="isShow" @close="fn"></modal>
+</div>
+<!-- slot: 插槽-->
+<template id="modal">
+    <div id="mask" v-show="show">
+        <div class="dialog">
+            <slot name="header"></slot>
+            <button @click="close">&times;</button>
+            <slot name="default"></slot><!-- 默认的名字叫default-->
+            <slot name="footer"></slot>
+        </div>
+    </div>
+</template>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: "#app",
+        data:{msg: "你确认删除?",visible: false,isShow: true},
+        methods:{
+            cb(){
+                this.visible = false;
+
+            },
+            fn(){
+                this.isShow = false;
+            }
+        },
+        components: {
+            modal: {
+                methods: {
+                    close(){
+                        this.$emit("close");
+                    }
+                },
+                template: "#modal",
+                props: ["show"]
+            }
+        }
+    });
+
+
+    //->如何实现一个虚拟的dom??
+
+
+</script>
+
+</body>
+</html>

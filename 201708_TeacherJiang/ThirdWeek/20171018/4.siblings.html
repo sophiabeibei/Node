@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>4.siblings</title>
+</head>
+<body>
+<div id="app">
+    <c1></c1>
+    <c2></c2>
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+
+    //发布订阅模式: 一呼百应;导致页面不好维护;
+    //以下方式只适合简单组件: 比如: 爷爷和孙子;平级也就两个组件;再多的组件,不建议使用这个方式;(可以使用vuex: 这是vuex中最难的一部分;课件的最后一天讲;能听懂就听;)
+    //vuex: 统一状态管理,借鉴redux,flux思想;
+
+
+    /*     把 this.$emit和this.$on 变成 EventBus.$emit和EventBus.$on; ==>实现交互;实现平级组件的传递  */
+    let EventBus = new Vue();//这种方式;(混乱,一般不采用);
+    let vm = new Vue({
+        el: "#app",
+        components: {
+            c1: {
+                methods: {
+                    change(){
+                        //->this: c1
+                        EventBus.$emit("love",this.color);
+                    }
+                },
+                created(){
+                    EventBus.$on("lovec2",(val)=>{
+                        this.color = val;
+                    })
+                },
+                data(){return {color: "red"}},
+                template: "<div @click='change'>兄弟1: color:{{color}}</div>"
+            },
+            c2: {
+                methods: {
+                    update(){
+                        EventBus.$emit("lovec2",this.color);
+                    }
+                },
+                created(){
+                    //console.log(vm);//->不能拿到vm;  把上面的this和下面的this变成同一个;
+                    //->this: c2;
+                    EventBus.$on("love",(val)=>{
+                        this.color = val;
+                    })
+                },
+                data(){return {color: "blue"}},
+                template: "<div @click='update'>兄弟2: color:{{color}}</div>"
+            }
+        }
+    });
+
+    //->四种传递方式:
+    //->父传子: 属性校验
+    //->子传父: 通过自定义事件;
+    //->平级的组件: 通过发布订阅模式;
+    //->复杂的vuex
+
+
+
+</script>
+
+</body>
+</html>

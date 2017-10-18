@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>1.render</title>
+</head>
+<body>
+<div id="app"></div>
+
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    //->使用模板编译的方式:1.有el;2.template;3.render;--vue提供了三种模板的方式;
+    //->会将el和template的形式转换成AST(抽象语法树);会转化成一个函数render,会返回一个vnode;{tage:"div",children:["hello",{tag: "hi"}]} -> createElement -> append页面中;
+    let vm = new Vue({
+        el: "#app",
+        render: createElement=>{
+            return createElement("div",{class:"a"},["hello",createElement("h1",{},"你好")]);
+        }
+
+        /*template: `
+            <div>hello
+                <h1>你好</h1>
+            </div>`*/
+    });
+
+
+
+
+</script>
+
+</body>
+</html>
