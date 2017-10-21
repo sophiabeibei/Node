@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>10.router</title>
+</head>
+<body>
+<div id="app">
+    <!-- to动态绑定时可以放对象;tag表示编译后的标签名-->
+    <router-link :to="{path:'/home'}" tag="button">首页</router-link>
+    <router-link to="/list" tag="span">列表页</router-link> <!-- to的两种方式-->   <!--tag的两种方式-->
+    <router-view></router-view>
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script src="node_modules/vue-router/dist/vue-router.js"></script>
+<script>
+    let Home = {template: "<div>首页</div>"};
+    let List = {template: "<div>列表页</div>"};
+
+    //->路由
+    let router = new VueRouter({
+        mode: "history",//->h5: pushState没有#,但是会有404;开发时采用默认hash的形式;
+
+        //->路由表
+        routes: [
+            {path: "/",component: Home},//->配置默认显示的组件;默认显示首页;
+            {path: "/home",component: Home},//->显示的首页
+            {path: "/list",component: List},//->显示的列表页
+            //{path: "*",component: List}//->方法1.匹配不到的,都走到列表页了;一般这样写,组件是切换了,但是路径还是写错了;
+            {path: "*",redirect: "/list"}//->方法2: 匹配不到的,都走到列表页了;一般这样写,重定向,一般都是404配置;
+        ]
+    });
+
+    //->Vue
+    let vm = new Vue({
+        el: "#app",
+        router
+    });
+</script>
+
+</body>
+</html>

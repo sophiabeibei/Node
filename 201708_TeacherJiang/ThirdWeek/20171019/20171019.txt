@@ -1,0 +1,168 @@
+通过webpack来打包vue
+    vue组件都写在一起了,每个.vue文件都是一个组件;.js babel-loader .css css-loader .vue vue-loader
+
+组件的组成
+    1.模板: 结构;需要vue-template-compiler
+    2.逻辑: 行为;
+    3.样式
+
+webpack: 模块化
+    webpack: webpack-dev-server
+    js打包: babel-core babel-loader babel-preset-es2015 babel-preset-stage-0
+    css模块: less less-loader css-loader style-loader
+    img模块: url-loader file-loader
+    html打包: heml-webpack-plugin
+    vue模块: vue-loader vue-template-compiler
+    vue: vue-router
+
+
+
+
+
+
+npm run build
+npm run dev: 不想打包
+
+vue-cli  脚手架
+    npm install vue-cli -g
+    vue init +模板名 +项目名
+        vue init webpack vue-pro-webpack
+    
+
+
+
+
+
+
+版本:
+    模板名
+    simple
+    2.webpack-simple
+    3.webpack
+    4.安装脚手架命令
+
+
+
+
+
+
+http://note.youdao.com/noteshare?id=8035bbbaf0fd7d73bd058deaae490a5c
+
+http://note.youdao.com/noteshare?id=aa1ba34aaf4e216099bd0aad3069cd4e
+
+http://note.youdao.com/noteshare?id=aa1ba34aaf4e216099bd0aad3069cd4e
+
+http://note.youdao.com/noteshare?id=aa1ba34aaf4e216099bd0aad3069cd4e
+
+http://note.youdao.com/noteshare?id=b1faa93b81653fde07bb591d71886265
+
+http://note.youdao.com/noteshare?id=b1faa93b81653fde07bb591d71886265
+
+http://note.youdao.com/noteshare?id=4016d2ac928f6ef8bdb00d2235dc7148
+
+http://note.youdao.com/noteshare?id=648240fca0d908bae926881db8f75232
+
+http://note.youdao.com/noteshare?id=72bbcd20c070821404ba55882e87d7b1
+
+http://note.youdao.com/noteshare?id=fe763f9613d36687e5202ee00873d461
+
+http://note.youdao.com/noteshare?id=6a6d394f6c0220bbf262de45ca0a28d2
+
+http://note.youdao.com/noteshare?id=68391b7b6b9427853e55284317b0951c
+
+http://note.youdao.com/noteshare?id=b1faa93b81653fde07bb591d71886265
+
+10 http://note.youdao.com/noteshare?id=a1ca11811af58180ebed071cd37a327d
+
+11 http://note.youdao.com/noteshare?id=740273d30a12be6eaf83aa45a2f31efa
+
+12 http://note.youdao.com/noteshare?id=a073a3730e78117cee191110184c447d
+
+13 http://note.youdao.com/noteshare?id=369398cf4b4fd388765fd992e6ba346d
+
+14 http://note.youdao.com/noteshare?id=89fcb34bde7fe7f0cd100f970baa6edb
+
+15 http://note.youdao.com/noteshare?id=8b0f8e5fed92d541d0bde6f7543a9b4c
+
+16 http://note.youdao.com/noteshare?id=76f468b2ddaefa1be9710da360ea12e7
+
+17 http://note.youdao.com/noteshare?id=40bec14fa10b7c4c81f2e6cd5bc0761d
+
+18 http://note.youdao.com/noteshare?id=6154df18b5b30a040d0e852eae73630e
+
+19 http://note.youdao.com/noteshare?id=34ed3e11d78c87a2ce43b26c2a58f8b0
+
+20 http://note.youdao.com/noteshare?id=b8a51b0c79a9414705dfa3f3d503c484
+
+21 http://note.youdao.com/noteshare?id=15b26f69d70635066d62628687123c8b
+
+22 http://note.youdao.com/noteshare?id=7bce846559baa34359f3d12380493e31
+
+23 http://note.youdao.com/noteshare?id=153db7621d798ea0e4cb035d58a333cb
+
+24 http://note.youdao.com/noteshare?id=4d2e6b4037d058982c19efdb1ab618e5
+
+25 http://note.youdao.com/noteshare?id=1ec31ccd6220708b6947359a90a95580
+
+26 http://note.youdao.com/noteshare?id=9ec8f3a8bd38a355306328edfc72c1c1
+
+28 http://note.youdao.com/noteshare?id=17ebd065919c4db8a70b56aaf8e468b3
+
+27 http://note.youdao.com/noteshare?id=73ed975a766dad074b8026c865441cbc
+
+29 http://note.youdao.com/noteshare?id=64b754449f9ee897775406be93784c9a
+
+30 http://note.youdao.com/noteshare?id=1e90cf95f7f180f27e2d483af49075fc
+
+31 http://note.youdao.com/noteshare?id=4b19a95f12a2092c9c57b9086fe68d38
+
+32 http://note.youdao.com/noteshare?id=5b3bb48290b9a4550c17a75afdeccccf
+
+33 http://note.youdao.com/noteshare?id=da247addf8f84f53c5438deee030d530
+
+34 http://note.youdao.com/noteshare?id=301601d688bf35a851261a2061c61fe1
+
+
+
+35 http://note.youdao.com/noteshare?id=02df8f3b2341484943cf2c45d8eab848
+
+36 http://note.youdao.com/noteshare?id=167c2e63da6cbcd7326b7aa43619ae99
+
+37 http://note.youdao.com/noteshare?id=a2b123e0337ee6966342c255de145638
+
+39 http://note.youdao.com/noteshare?id=0987407e6a9166793b4a697e5f450d1e
+
+40 http://note.youdao.com/noteshare?id=2cecb7fc5a3ff4aa21b893d0ac04704f
+
+http://note.youdao.com/noteshare?id=2cecb7fc5a3ff4aa21b893d0ac04704f
+
+linux http://note.youdao.com/noteshare?id=3826dd9481cb75b8c96ad3a3516e803b
+
+meituan http://note.youdao.com/noteshare?id=c8e2d8b7648f5a173c3a9c069344a716
+
+http://www.zhufengpeixun.cn/docs/html/%E9%9D%A2%E8%AF%95%E7%9C%9F%E9%A2%98/%E7%94%A8%E5%8F%8B%E7%BD%91%E7%BB%9C.html
+
+https://github.com/GuoYongfeng/idoc/blob/2016_bak/md/%E5%9B%A2%E9%98%9F/%E7%AC%94%E8%AF%95%E9%9D%A2%E8%AF%95%E5%A4%A7%E7%BA%B2.md
+
+
+
+
+
+
+
+
+
+
+
+npm install bootstrap
+
+
+
+
+
+
+
+
+
+
+
