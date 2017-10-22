@@ -1,0 +1,169 @@
+一.buffer代表的是内存
+    1.global.Buffer(16进制)
+    2.进制转化;8bit = 1b; 1024b = 1k
+    3.二进制最大多少;11111111(二进制) = 255(10进制)
+    4.当前进制^(当前位-1)*当前位的值;
+    5.parseInt("1011",2)转化成十进制;
+    6.255的16进制 = FF
+    7.(255).toString(16);//->"FF" ->转化成16进制;  在控制台验证;
+    8.(255).toString(2);//->"11111111" ->转化成2进制;  在控制台验证;
+    9.node中最小单位是字节,每个字节不能超过ff;
+
+
+二.声明buffer有三种方式(buffer不能改变长度,一次性的确定下来)
+    1.通过长度创建
+    2.通过字符串创建
+    3.通过数组创建
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2017七期同学笔记:
+9.第二周Day4 node buffer fs
+一.Buffer
+    Buffer用来表示一段内存;内存一般是2进制;Buffer表现的是16进制;可以和字符串转化;
+    node是不支持gbk(国际字体的);它支持utf8;
+    buffer长的像数组;有一些数组的方法 slice 通过索引取值 ...
+
+    1.进制转换
+        Bit b字节(代码中,最小的单位)
+        1个字节等于8个位;每个位都是由2进制组成的;
+        一个汉字等于3个字节;也就是24位;
+        每个字节最大是多少2进制;
+
+    将任意进制转化成10进制;
+    当前位的值 *当前机制^(所在为-1)累加   1*2^7......+1*2^1+1*2^0
+    http://tool.oschina.net/hexconyert/ 转换器
+
+    Math.pow(2,8)-1
+    255
+    2的8次方减1;
+
+    16进制的255是多少 = fff(buffer中每个字节最大是ff)
+
+二.Buffer的声明方式(固定大小)
+    通过长度创建
+    通过字符串创建
+    通过数组创建
+
+    1.通过长度创建的buffer: 内容是随机的;
+    let buffer = new Buffer(100);
+    console.log(buffer);
+    buffer.fill(0); 手动将buffer清空;
+
+    2.通过字符串创建的buffer: 字符串具有不变性;
+    let buffer = new Buffer("珠峰");
+    console.log(buffer);//-><Buffer e7 8f a0 e5 b3 b0>
+
+    let str = "我爱你";
+    str[0] = "他";
+    let buffer = new Buffer("str");
+    console.log(str);//->我爱你
+    console.log(buffer);
+
+    3.通过数组创建的buffer: 这种方式用的相对较少;
+    let buffer = new Buffer([0,255]);
+    console.log(buffer);//-><Buffer 00 ff>
+
+    buffer代表的是内存;所以是引用数据类型;
+    数组的slice,深拷贝,浅拷贝;
+
+    浅拷贝;深拷贝
+    let obj = {a: 1};
+    [obj] [obj] 浅拷贝: 里面存放的内容和以前的同一个地址;
+    [obj] [{a: 1}] 深拷贝: 指的是对象中,里面存放的对象和以前的对象,毫无关系,但是长的一样;
+
+    let ary = [1,2,3];
+    let ary1 = [ary,100,200];
+    let newAry = ary1.slice();//->[[500,2,3],100,200]和以前的有关系,slice是浅拷贝;
+    ary[0] = 500;
+    console.log(newAry);
+
+    Object.assign({},{a:{a:1}});//->浅拷贝
+    JSON.parse(JSON.stringify({a:{a:1}}));//->深拷贝,转换字符串,并且和之前毫无关系了;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2.txt
+
+
+
+
+
+
+
+
+
+
