@@ -100,6 +100,58 @@
 
     Object.assign({},{a:{a:1}});//->浅拷贝
     JSON.parse(JSON.stringify({a:{a:1}}));//->深拷贝,转换字符串,并且和之前毫无关系了;
+    //->但是这个不支持函数的拷贝
+
+    buffer中存放的都是内存地址;所以slice不会返回一个新的buffer;
+    let buffer = new Buffer([1,2,3,4]);
+    condole.log(buffer);//-><Buffer 01 02 03 04>
+    let newBuffer = buffer.slice(0,1);
+    newBuffer[0] = 100;
+    console.log(buffer);//-><Buffer 64 02 03 04>
+
+三.Buffer的常用方法;
+    copy方法
+        复制Buffer,把多个buffer拷贝到一个大buffer上;
+        参数: (targetBuffer,targetstart,sourcestart,sourceend)
+        目标Buffer  目标的开始  源的开始   源的结束  copy 操作按照的是buffer的长度(字节长度)
+
+        var buff1 = new Buffer("珠峰");
+        var buff2 = new Buffer("培训");
+        var bigBuffer = new Buffer(12);
+
+        buff1.copy(bigBuffer,0);//->0-6
+        buff2.copy(bigBuffer,buff1.length);//->相当于6
+        console.log(bigBuffer.toString());//->buffer可以调用toString方法,转化成字符串
+        //->珠峰培训
+
+    concat方法
+        Buffer.concat([buff1,buff2].length);
+
+        var buff1 = new Buffer("珠峰");
+        var buff2 = new Buffer("培训");
+        console.log(Buffer.concat([buff1,buff2],3).toString());//->珠
+
+    自己写concat方法
+        1.看totalLength是否传递,如果传递了用传递的长度构建一个大buffer;
+        2.如果没有长度,循环list;算出总长度,构建一个大buffer;
+        3.循环list将每一个小buffer拷贝到大buffer上;
+        4.如果长度过长,截取有效的长度;
+        5.返回大buffer;
+
+        var buff1 = new Buffer("珠峰");
+        var buff2 = new Buffer("培训");
+        Buffer.myConcat = function(list,totalLength){
+            list.reduce((prev,next)=>{
+                return prev + next.length;//->算出长度;
+            },0);
+        };
+        let buffer = new Buffer(totalLength);//->构建大buffer
+        let index = 0;
+        list.forEach(buff=>{
+            buff.copy(buffer,index);
+            index += buff.length;//->index就累加
+        });
+        return buffer.slice(0,index);//->如果长度过长,截取有效的长度
 
 
 
@@ -156,7 +208,9 @@
 
 
 
-2.txt
+
+
+
 
 
 
