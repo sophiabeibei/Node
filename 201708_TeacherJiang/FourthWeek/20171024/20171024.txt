@@ -1,0 +1,24 @@
+vue-cli  脚手架
+    npm install vue-cli -g
+    vue init +模板名 +项目名
+        vue init webpack vue-pro-webpack
+        vue init webpack vue-book
+
+        npm install less less-loader --save
+
+
+        npm install axios vuex --save
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+</head>
+<body>
+<!-- script标签,css,src不受跨域限制;-->
+<!-- jsonp里最**的一句话: 通过js动态创建script标签,通过script没有跨域限制,所以可以引入外部的js;要求支持后端支持;
+
+  动态创建一个script标签
+-->
+<script>
+  function getData(data) {
+    console.log(data);
+  }
+
+  let oScript = document.createElement("script");
+  oScript.src = "http://localhost:3000/jsonp?cb=getData";
+  document.body.appendChild(oScript);
+  //->jsonp: 要求函数必须是全局函数;
+</script>
+
+</body>
+</html>
