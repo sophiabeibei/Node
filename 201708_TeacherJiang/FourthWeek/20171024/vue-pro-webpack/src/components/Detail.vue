@@ -1,6 +1,6 @@
 <template>
  <div>
-   <MHeader :back="true">添加</MHeader>
+   <MHeader :back="true">修改</MHeader>
    <div class="content">
      <div>
        <label for="bookName">书名</label>
@@ -19,9 +19,9 @@
        <input type="text" id="bookPrice" v-model="book.bookPrice">
      </div>
      <div>
-       <button @click="add">添加</button>
-     </div>
+       <button @click="update">修改</button>
    </div>
+ </div>
  </div>
 </template>
 
@@ -31,22 +31,38 @@
   export default{
     data(){
       return {
-          book: {
-            bookName: "",
-            bookPrice: "",
-            bookCover: "",
-            bookInfo: ""
-          }
+        book: {
+          bookName: "",
+          bookPrice: "",
+          bookCover: "",
+          bookInfo: ""
+        }
       }
     },
     created(){
+      this.getBook();
+    },
+    watch: {
+        $route(){//监控路径参数的变化;参数变化后,重新校验;看是否有这本书;没有就跳转回去;
+            this.getBook();
+        }
     },
     methods: {
-        add(){//->点击添加按钮发送ajax;
-          axios.post("/api/book",this.book).then(()=>{//-> 什么时候执行then;res.end()之后执行then;then表示响应结束;
+      getBook(){
+        axios.get("/api/book?id="+this.$route.params.id).then(res=>{
+          if(res.data.err){
+            this.$router.push("/list");
+          }else{
+            this.book = res.data.book;
+          }
+        });
+      },
+      update(){//->点击添加按钮发送sjax
+        //->通过url传递id,通过请求体传递数据;
+          axios.put("/api/book?id="+this.book.id,this.book).then(res=>{
               this.$router.push("/list");
-          });
-        }
+          })
+      }
     },
     computed: {},
     components: { MHeader }
@@ -60,14 +76,19 @@
   ul,li{list-style: none}
   input,button{-webkit-appearance: none}!*不加,苹果手机默认的样式是灰色;默认的阴影*!
   html,body{font-size: 14px}*/
-  .content div{
-    width: 90%;
-    margin: 20px auto;
-    label{float: left;}
-    input{
-      margin-left: 20%;
-      display: block;
-      width: 80%;
+  .content {
+    bottom: 0;
+    z-index: 99999;
+    background: #fff;
+    div{
+      width: 90%;
+      margin: 20px auto;
+      label{float: left;}
+      input{
+        margin-left: 20%;
+        display: block;
+        width: 80%;
+      }
     }
   }
 </style>

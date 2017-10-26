@@ -1,8 +1,12 @@
 <template>
-  <MHeader :back="true">收藏</MHeader>
+  <div>
+    <MHeader :back="true">收藏</MHeader>
+    <div>{{collects}}</div>
+  </div>
 </template>
 
 <script>
+  import {mapState} from "vuex";
   import MHeader from "../base/MHeader.vue";
   export default{
     data(){
@@ -11,7 +15,9 @@
     created(){
     },
     methods: {},
-    computed: {},
+    computed: {
+      ...mapState(["collects"])
+    },
     components: { MHeader }
   }
 </script>
