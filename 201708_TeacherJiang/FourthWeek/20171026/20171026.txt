@@ -1,0 +1,78 @@
+今天的课程,接昨天天的讲;案例在前天(20171024)
+
+
+
+
+路由懒加载:
+    https://router.vuejs.org/zh-cn/advanced/lazy-loading.html
+
+
+
+
+
+Vuex:
+    https://vuex.vuejs.org/zh-cn/installation.html
+        Actions: 动作
+        Mutations:
+        Backend API:
+        Devtools:
+        Vue Components: 组件
+        State:
+
+        Vue.store容器 存放的有: {
+
+        }
+
+        修改  build文件夹中的"webpack.base.conf"文件里的  "./src/main.js" 改成  "./src-vuex/main.js"
+        module.exports = {
+          entry: {
+            app: './src-vuex/main.js'
+          },
+
+姜文老师的PPT:
+    http://blog.fullstackjavascript.cn/post/vue8.html
+
+
+
+Vuex讲解
+    https://vuex.vuejs.org/zh-cn/installation.html
+
+一.Introduction
+
+二.寻找1.0文档?
+
+三.更新记录
+
+四.安装
+
+五.Vuex是什么?
+
+六.开始
+
+七.核心概念
+
+八: 项目结构
+
+九.插件
+
+十.严格模式
+
+十一.表单处理
+
+十二.测试
+
+十三.热重载
+
+十四.API文档
+
+
+
+
+
+
+
+
+
+
+
+
