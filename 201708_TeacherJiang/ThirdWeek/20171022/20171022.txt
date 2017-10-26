@@ -155,18 +155,8 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+npm init -y
+npm install mime   安装第三方包mime
 
 
 
