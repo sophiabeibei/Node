@@ -1,0 +1,21 @@
+    Node - Vue - Review(复习)
+
+Vue
+    https://cn.vuejs.org/v2/guide/
+
+
+router
+    https://router.vuejs.org/zh-cn/
+
+
+Vuex
+    https://vuex.vuejs.org/zh-cn/
+
+
+姜文老师的blog
+    http://blog.fullstackjavascript.cn/archives/
+
+
+    框架:Vue,React都是依赖node平台运行;
+        今天Vue课程结束;
+        这周六(20171028)开始将react;
