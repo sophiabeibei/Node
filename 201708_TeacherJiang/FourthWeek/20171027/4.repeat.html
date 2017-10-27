@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>4.repeat</title>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="(item,index) in phones">
+            {{index+1}}.{{item.name}}
+            <ul>
+                <li v-for="(item,index1) in item.types">
+                    {{index+1}}.{{index1+1}}.{{item}}
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <ul>
+        <li v-for="val in school">
+            {{val}}
+        </li>
+    </ul>
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: "app",
+        data: {
+            phones: [
+                {name: "苹果",types: ["phone6","phone7"]},
+                {name: "小米",types: ["红米","note2"]},
+                {name: "三星",types: ["s4"]}
+            ],
+            school: {
+                name: "珠峰",
+                age: 8,
+                address: "回龙观东大街XXX"
+            }
+        }
+
+
+    });
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>3.v-for</title>
+</head>
+<body>
+<script>
+    [1,2,3,45].forEach((item,index)=>{});
+</script>
+<div id="app">
+    <!-- v-for要循环谁,就写在谁的身上;--基础的遍历一个数组;
+        默认是value in 数组;
+        (item,index) in 数组;
+    -->
+    <ul>
+        <!-- {{item}}: 只要取值就这样写;-->
+        <!--<li v-for="item in arrs">{{item}}</li>-->
+        <li v-for="(item,index) in arrs">{{item}} {{index}}</li>
+    </ul>
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    /* Vue由两部分组成:
+    *   1.Vue.common
+    *   2.Vue.runtime
+    *
+    * es6支持很多模块:
+    *   1.import
+    *   2.export
+    * */
+
+    let arr = [1,2,3];
+    let vm = new Vue({
+        el: "#app",
+        data: {
+            arrs: arr
+        }
+    });
+    //vm.arr[0] = 100;//->这样改是没效果的;不能直接更改数组的某一项的值;可以用新数组覆盖掉老数组;
+    //vm.arr = [4,5,6];//->直接把原数组给覆盖掉;
+
+    //->https://cn.vuejs.org
+    vm.set(vm.arr,1,9);
+
+
+    //->对象循环;方法;bootstrap;综合起来做个小例子(购物车)
+    //->bootstrap官网: http: v3.bootcss.com
+
+
+
+
+
+    /*今天是把Vue入门;
+    * 下面会讲组件,路由;
+    * 第三周是考试周;
+    * */
+
+    /* 报错: Property or method "phones" is not defined na the instance but referenced during render;
+    Property: 属性
+    method: 方法
+    defined: 定义;
+    属性或者方法"phones"是未定义的;
+
+    phone in phones: phone是每一项;
+    {{phone.name}}: 拿每一项中的name的属性值;
+
+    (phone,index) in phones: 拿每一项和索引;
+    {{index+1}}
+    {{phone.name}}
+    <ul>
+        <li v-for="t in phone.types">
+        //->phones.types: 这样写是错误的;
+        //->phone.types: 这样是是对的;
+
+            {{index+1}}.{{i+1}}
+            {{t}}
+        </li>
+    </ul>
+
+    */
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>1.helloWorld</title>
+</head>
+<body>
+<!-- 只有#app范围内,才能使用Vue的数据-->
+<div id="app">
+    {{a}}
+    {{msg}}
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<!-- 一片json,配一片html即可-->
+
+<script>
+    //->vm返回的是Vue的实例;也就是viewModel;
+    let vm = new Vue({
+        el: "#app",//->querySelector
+        //->挂载数据
+        data: {//->数据;这个对象会被vm所代理;用的是原生自带的方法: Object.defineProperty,set,get + 发布订阅模式;可以实现监控数据的变化,不兼容ie8及以下版本;
+            a: 1,
+            msg: "hello world"
+        },
+    });
+
+</script>
+
+</body>
+</html>

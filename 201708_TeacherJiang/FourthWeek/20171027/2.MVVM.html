@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>2.MVVM</title>
+</head>
+<body>
+    <!--<div id="app1">
+        {{msg}}
+    </div>
+    <div id="app2">
+        {{msg}}
+    </div>-->
+
+    <div id="app">
+        <!-- v-model: 会将msg的值赋予给输入框,当输入框值发生变化的时候,将值再赋予给msg;这叫视图影响数据---双向绑定;-->
+
+        <input type="text" v-model="msg">
+        <!-- {{}}是v-text的简写,属性默认不会展示在html上;当编译好后,会自动插入到div中;-->
+        <div v-text="msg"></div>
+
+        <!-- 只绑定一次-->
+        <div v-once>{{msg}}</div>
+
+        <!-- 绑定html: 转换html标签;容易xss攻击;一般不会使用;-->
+        <div v-html="msg"></div>
+
+        <!-- v-cloak: 防止闪烁;要求自己写一个style样式;一般不用;-->
+        <style>
+            [v-cloak]{display: none}
+        </style>
+        <div v-cloak>
+            {msg}{msg}{msg}{msg}{msg}{msg}
+        </div>
+
+        <!-- 最常用的Vue指令: {{}};可以放三元运算符,表达式,或者函数执行的返回结果;-->
+        {{msg=="我很帅"?"ok": "no";}}
+
+        <!-- 可以放对象-->
+        {{ {name: 1} }}
+
+
+    </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        //->可以创建多个实例,但没人这么用;vue-devtools可以帮我们调试Vue代码
+        //->视图能改变才能双向数据绑定,能改变input(text checkbox radio) 类型textarea,select;如果见到以上属性,想获取值;需要加一个"指令";
+        //->特殊的属性: 以"v-"开头的;叫行间属性;v-model;
+        //->v-model: 实现双向数据绑定;v-model="这里放变量";
+        /*let vm1 = new Vue({
+            el: "#app1",
+            data: {
+                msg: "我很帅"
+            }
+        });
+        let vm2 = new Vue({
+            el: "#app2",
+            data: {
+                msg: "我非常帅"
+            }
+        });*/
+
+        //->正常访问的方法;创建一个vm实例;
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                msg: "<h1>我很帅</h1>"
+            }
+        });
+
+
+
+        //->
+
+
+
+        /*
+        1.安装vue-devtools的方法:
+        2.Vue指令
+            1.双向绑定
+                v-model
+
+            2.{{}}的简写
+                v-text
+
+            3.只绑定一次
+                v-once
+
+            4.
+
+            5.
+
+            6.
+
+        3.
+
+        4.
+
+
+        */
+
+
+
+
+    </script>
+</body>
+</html>

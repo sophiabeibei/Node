@@ -19,3 +19,448 @@ Vuex
     框架:Vue,React都是依赖node平台运行;
         今天Vue课程结束;
         这周六(20171028)开始将react;
+
+
+---------------------------------------------分割线---------------------------------------------
+数组的方法:
+    pop,shift,unshift,push,slice,splice,concat,lastIndexOf,indexOf,reverse,sort,join,forEach,map;
+    find,includes,map,forEach,reduce,filter,some;
+
+    1.更改语法
+        settings -> Languages & Frameworks -> JavaScript -> ECMAScript 6
+    2.配置node环境
+        settings -> 搜npm -> Languages & Frameworks -> Node.js and NPM ->
+        ->点Enable之后,变成两个按钮(Disable,Usage scope..)说明就成功了;
+
+    如果配置好以上还报错,说明webStorm版本过低;
+
+    a()函数方法的几种写法:
+    1.
+        function a(){
+            return a+b;
+        }
+    2.
+        let a = (a,b) => {
+            return a+b;
+        }
+    3.
+        let a = (a,b) => a+b;
+    4.就希望返回一个对象
+        let a = (a,b) => ({a+b});
+
+    arrow function(箭头函数)的好处:
+        1.代码简练;备注: 如果=>后面是对象,需要用()包住;
+        2.没有this指向;用箭头函数解决this问题;
+            关于this,普通函数执行
+            1.点前面是谁,this就是谁;
+            2.bind可以改变this指向问题;弊端: 只能bind一次;
+            3.可以使用变量保存的方式保留this指向;弊端: 太罗嗦;
+        3.没有arguments;
+        于是诞生箭头函数arrow function;
+
+
+
+    1.obj.a的属性值(匿名函数的返回值)是个对象;
+    2.obj.a执行,匿名函数中setTimeout中的this是window;
+    //->如下:
+    let obj = {
+        a: function (){
+            //->console.log(this);//->Object{a:function...}
+            //->setTimeout: window.setTimeout;(这里不能写;因为是node环境;没有window)
+            setTimeout(function(){
+                console.log(this);//->window
+            },500)
+        }
+    };
+    obj.a();
+
+
+    如上改需求: 把setTimeout中的this的值(window)修改成(obj);
+    方法一: 通过bind修改this指向;
+    //->如下:
+    let obj = {
+        a: function(){
+            setTimeout(function(){
+                console.log(this);//->obj
+            },bind(this),1000)//->
+        }
+    };
+    obj.a();
+
+
+    如上例子: bind(this),写多次,会经过多次修改吗?
+    1.bind可以改变this指向问题;但是只能bind一次;
+    //->如下:
+    let obj = {
+        a: function(){
+            setTimeout(function(){
+                console.log(this);//->obj
+            },bind(this),bind(1),bind(2),bind(3),2000);
+        }
+    };
+    obj.a();
+
+
+    方法二: 通过变量保存的方式修改this指向问题
+    let obj = {
+        a: function(){
+        let _this = this;
+            setTimeout(function(){
+                console.log(_this);//->obj
+            },3000);
+        }
+    };
+
+
+    把普通函数改成箭头函数
+    let obj = {
+        a: function(a,b,c){
+            setTimeout(() => {
+                console.log(this);//->this
+                console.log(arguments);
+            },4000);
+        }
+    };
+    obj.a(1,2,3);
+
+    -------闭包: 私有化;当一个函数执行后,返回一个引用类型对象;并且被外部变量接收;
+    function a(b){
+        return function (c){
+            return b+c;
+        }
+    }
+    console.log(a(1)(3));
+
+    改成arrow function
+    let a = b => {
+        return c => {
+            return b+c;
+        }
+    }
+    console.log(a(1)(2));
+
+    不写大括号,就可以不写return,如下:
+    let a = b => c => b+c;//->这种格式叫高阶函数;(函数中有多个箭头)
+    console.log(a(1)(2));
+
+    --------------
+    1).includes: 是否包含;返回的是boolean类型;(是否包含5);
+        let arr = [1,2,3,4,5];
+        arr.includes(5);//->es7的语法  判断数组中是否包含5
+        console.log(arr.includes(5));
+
+    2).some: 看一看;返回boolean类型;
+        let flag = arr.some((item,index)=>item>3);//->
+        console.log(flag);//->true
+
+    3).find: 返回找到后的结果;找到后就不再继续查找
+        let result = arr.find(item,index=>item>3);
+        console.log(result);
+
+    4).reduce: 收敛;返回叠加后的结果;
+        let num = arr.reduce(prev,next=>{//->数组是这样[1,2,3,4,5]
+            //console.log(prev,next);
+            return prev+next;//->会将返回的结果当作下一次的上一个;
+        });
+        console.log(num);
+
+        ------------------
+        let num = arr.reduce(prev,next=>{
+            //console.log(prev,next);
+            return prev+next;//->
+        },0);//->第二个参数是手动指定的前一个;
+        console.log(num);
+
+        let ary = [{price: 30},{price: 40},{price: 50}];
+        let r = ary.reduce((prev,next)=>{
+            console.log(prev,next);
+            return prev+next.price;//->保证上一项永远是数字;
+        },0);
+        console.log(r);
+
+    5).filter: 过滤;返回一个过滤后的数组;满足条件就放到新数组中;返回true就放到新数组中;
+        //->[1,2,3,4,5]
+        let ars = arr.filter(item=>!(item<=3));//->item: 数组中的每一项;
+        console.log(ars);
+
+    6).map: 映射;映射出一个新数组;map函数中的返回值将会作为数组中的新项;
+        let ma = [1,2,3];
+        //->需求: 把原数组变成列表;    //->template String
+        ma.map(item=>`<li>${item}</li>`);
+        console.log(res.join(""));
+
+        [1,2,3].forEach();
+
+    //->以上方法都属于声明式渲染;声明式: 不关心内部结构;
+    ------------------------------------------------
+    //->以下方法是编程式代码
+    for(let i=0;i<arr.length;i++){}
+    for(var i=0;i<arr.length;i++){}
+
+    angular 1.0   angular2.0  angular 4
+    0 -> 1.0 -> 2.0 虚拟dom 内存中的对象;
+
+库和框架
+    1.jquery是库,库是提供了很多方法,你来去调用;
+    2.框架,你写好了,人家调用你;
+
+Vue有两种使用方式
+    1.正常html引入vuejs;
+    2.大型项目开发(工程化,vue全家桶: es6 + webpack + Vue + Vue-router+Vuex + axios)
+
+1.Vue介绍
+    核心只关注视图层(view)
+    易学,轻量,灵活的特点
+    适用于移动端项目
+    渐进式框架
+
+    渐进式的理解
+        声明式渲染(无需关心如何实现)
+        组件系统
+        客户端路由
+        大规模状态管理
+        构建工具
+
+        可以根据情况选择,随意搭配组成自己想要的框架结构
+
+2.Vue的两个核心点
+    响应式的数据变化
+        当数据发生变化,
+
+    组合的视图组件
+        ui页面映射为组件树
+        划分组件可维护,可服用,可测试;
+
+
+3.MVVM模式(双向的)
+    M: Model数据模型
+    V: view视频模板
+    VM: view-Model视图模型
+
+    将数据绑定到DOM上,监听视图的变化更改数据;
+
+    传统的MVC: 单向的;
+        面试的时候,有要求
+        MVC框架 -> backbone
+        要求MVVM -> angular Vue react
+
+
+    下模块的网站: https://www.npmjs.com
+    可以在这上面安装很多软件,比如: 搜索vue
+    基于npm的vue开发,在github里搜索vuejs: swesome-vue(了不起的vue);看star的数量
+        项目example;
+
+4.Vue的安装
+    1.0 -> 2.0
+
+    查看node版本号
+        node -v: 查询版本号
+        npm -v: 同上;
+        node才有的npm;
+        可以npm install npm,不可以npm install node;
+
+
+    初始化
+        npm -init
+        npm -init -y
+
+        package.json里面不能写注释;
+
+    安装Vue
+        npm install vue
+        npm install vue -g  表示在命令行里用;(通常不加-g)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
