@@ -6,11 +6,26 @@ let app = express();
 //=>使用此中间件之后,req请求对象多了一个cookies属性;
 app.use(cookieParser());
 app.get("/write",function (req, res) {
-    res.cookie("name","zfpx");
+    //->1.不指定任何参数
+    //res.cookie("name","zfpx");
+    //->2.指定域名,指定这个cookie归谁所有,当向哪个域名发请求的时候才会带上此cookie;默认值是当前域名;
+    //->a.zfpx.cn b.zfpx.cn都指向本地127.0.0.1
+    //->配置host文件;
+    /*res.cookie("name","zfpx",{
+        domain: "a.zfpx.cn"
+    });*/
+    //--------------------------------------------------
+    //path 指定路径
+    //如果指定了cookie的路径,那么只有当客户端再次向服务器发送;指定路径的请求时,才会发送cookie;否则其它路径补发送;
+    res.cookie("name","zfpx",{path: "/read1"});
     res.send("write ok");
 });
 
-app.get("/read",function (req, res) {
+app.get("/read1",function (req, res) {
+    //->name=zfpx querystring.parse(str);
+    res.json(req.cookies);
+});
+app.get("/read2",function (req, res) {
     //->name=zfpx querystring.parse(str);
     res.json(req.cookies);
 });
@@ -21,16 +36,16 @@ app.get("/visit",function (req, res) {
     //->2.把访问次数+1;
     visit++;
     //->3.把最新的访问次数写回客户端;
-    res.cookie("visit");
+    res.cookie("visit",visit);
     //->写个响应体
     res.send("欢迎你的第{visit}次访问");
 });
+app.get("/clear",function (req, res) {
+    //->Set-Coookie visit=     等于空;
+    res.clearCookie("visit");
+    res.send("重置访问次数");
+});
 app.listen(8080);
-
-
-
-
-
 
 
 

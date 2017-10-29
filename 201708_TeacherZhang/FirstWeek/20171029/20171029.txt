@@ -1,7 +1,8 @@
 npm install ejs body-parser -S
     安装ejs模板引擎;
 
-React
+express
+react
     用户管理系统
 
     注册
@@ -16,8 +17,12 @@ React
 
 
 
+cookie
+    cookie是为了辩别用户身份，进行会话跟踪而存储在客户端上的数据
 
 
+作业
+    统计每个客户端访问服务器的次数;
 
 
 
