@@ -1,1 +1,119 @@
-react
+React
+------------------------------------20171027
+张仁阳<hongqishi@qq.com>  22:23:19
+@全体成员
+本周六讲解express cookie session
+express
+文档
+http://www.zhufengpeixun.cn/docs/html/node%E5%91%A8%E6%9C%AB%E5%A4%A7%E7%BA%B2/1.Express.html
+http://www.zhufengpeixun.cn/docs/html/node%E5%91%A8%E6%9C%AB%E5%A4%A7%E7%BA%B2/2.cookie.html
+http://www.zhufengpeixun.cn/docs/html/node%E5%91%A8%E6%9C%AB%E5%A4%A7%E7%BA%B2/3.session.html
+视频
+下载链接：http://pan.baidu.com/s/1bo87HoF 密码：dcpr
+在线观看 http://www.ablesky.com/kecheng/detail_1260500
+张仁阳<hongqishi@qq.com> 2017/10/27 22:25:23
+
+张仁阳<hongqishi@qq.com>  22:26:29
+React参考资源
+英文官方文档
+https://facebook.github.io/react/
+中文官方文档
+https://doc.react-china.org/
+http://www.css88.com/react/
+redux官网文档
+英文 http://redux.js.org/
+中文 http://www.redux.org.cn/
+参考纸质书籍
+React推荐书籍 React与Redux开发实例精解
+http://item.jd.com/12010463.html
+
+参考电子教材
+http://huziketang.com/books/react/
+在线练习
+https://scriptoj.com/problemsGroups/593a2e29b3838c385539fa4f
+视频教程百度云盘下载地址
+链接：http://pan.baidu.com/s/1c1ZAezu 密码：3qp0
+视频教程在线观看地址
+http://www.ablesky.com/org/510_d_381963_0_-1_-1_0_1#orgTab
+实战项目
+https://github.com/zhufengnodejs/zhufengketangapp
+王勒(1962237650)  22:44:00
+@张仁阳 老师，明天我请一天假，有点私事要办。
+张仁阳<hongqishi@qq.com>  22:45:35
+我的手机号 15718856132
+如果要请假必须提前给我打电话或发短信，否则一率按旷课处理
+-----------------------------------------------------------
+张仁阳<hongqishi@qq.com> 2017/10/28 9:28:00
+tim
+张仁阳<hongqishi@qq.com> 2017/10/28 9:29:28
+http://office.qq.com/
+张仁阳<hongqishi@qq.com> 2017/10/28 9:30:56
+http://www.zhufengpeixun.cn/docs/html/node%E5%91%A8%E6%9C%AB%E5%A4%A7%E7%BA%B2/1.Express.html
+张仁阳<hongqishi@qq.com> 2017/10/28 9:40:08
+这是第三周，后面还有三周
+Node express koa mongodb weboscket socket.io 聊天室
+React react基础 react路由 案例
+最后一周，第三周会讲二个项目 珠峰课堂 我是早鸟
+自己分组项目实战
+张仁阳<hongqishi@qq.com>  9:42:14
+上课的注意事项
+1. 不要迟到。
+2. 千万不要请假，后面要用到前面的知识点
+3. 上课我讲课快的时候或说话快的的时候一定请记得提醒我
+
+
+
+
+1.Express介绍
+    Express是一个简洁,灵活的node.js Web应用开发框架,是目前最流行的基于Node.js的Web开发框架,它提供一系列强大的功能,比如:
+
+    1.路由控制
+    2.参数获取
+    3.中间件
+    4.send和sendFile
+    5.静态文件服务
+    6.模板解析
+    7.重定向
+
+2.使用express
+
+3.路由
+    1.get请求
+    2.all
+    3.小练习
+
+
+4.获取请求参数
+    1.获取主机和路径
+    2.获得查询字符串
+    3.params路径参数
+
+
+5.中间件
+
+
+6.send
+
+
+7.模板
+
+
+8.静态文件服务器
+
+
+9.重定向
+
+
+10.作业: 注册登录实战
+
+
+11.curl客户端使用方法
+
+
+12.中间件原理
+
+
+13.params原理
+
+
+
