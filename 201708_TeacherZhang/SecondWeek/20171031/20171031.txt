@@ -1,10 +1,20 @@
+我亲爱的给的资料
+   10:16:32
+https://doc.react-china.org/docs/hello-world.html
+这边有个中文教程，不用看官网的，全是英文
+中文这个也是基于create-react-app创建，你能更好的理解
+
+npm install -g create-react-app
+create-react-app 201708react
+
+----------------------------------------------------
 
 张仁阳<hongqishi@qq.com>  9:37:18
 1 react官网 https://reactjs.org/
 2. http://www.css88.com/react/
 3. http://huziketang.com/books/react/lesson1
 
-通过这个,写出react代码;经过bable编译的
+通过这个,写出react代码;经过babel编译的
 https://codepen.io/gaearon/pen/ZpvBNJ?editors=0010
 
 The smallest React example looks like this: react小例子
@@ -16,61 +26,275 @@ ReactDOM.render(
     //把标签放到div里面;
 );
 
-
 下载这个工具,安装create-react-app -g
 npm install create-react-app -g
 
+elements and components: 元素 and 组件
 
-elements and components.
-元素 and 组件
+Once 一旦
 
+small reusable pieces 小片段;
 
-
-
-
-
-
+学react,只需理解这四个:
+元素,组件,属性,状态
 
 
+ES6 syntax: ES6 语法
+
+arrow functions: 箭头函数
+classes: 类
+template literals: 模板字符串
+
+------------------------------------------------------
+ES6 转换成 ES5是什么样子,可以看以下:
+http://babeljs.io/repl/#?babili=false&evaluate=true&lineWrap=false&presets=es2015%2Creact&experimental=false&loose=false&spec=false&code=const%20element%20%3D%20%3Ch1%3EHello%2C%20world!%3C%2Fh1%3E%3B%0Aconst%20container%20%3D%20document.getElementById('root')%3B%0AReactDOM.render(element%2C%20container)%3B%0A
 
 
+------------------------------------------------------
+Installation: 安装
+https://reactjs.org/docs/installation.html
+
+flexible: 灵活
+
+Here are a couple of ways to get started: 三个途径使用React
+Try React:
+Create a New App: 创建一个新的APP
+Add React to an Existing App
 
 
+Creating a New Application: 创建一个新的项目
+https://reactjs.org/docs/installation.html#creating-a-new-application
+
+npm install -g create-react-app    安装create-react-app的开发环境
+create-react-app my-app   备注: my-appName不能包含大写字母
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+an optimized: 优化,压缩的;
 
 
 
+------------------------------------------------------
+Introducing Jsx: Jsx
+https://reactjs.org/docs/introducing-jsx.html
+
+template language: 模板语言   Vue是;
+
+
+JSX necessary: JSX基础知识
+
+
+JavaScript expression: JS表达式;
+
+
+/*
+function formatName(user) {
+  return user.firstName + ' ' + user.lastName;
+}
+
+const user = {
+  firstName: 'Harper',
+  lastName: 'Perez'
+};
+
+const element = (
+  <h1>
+    Hello, {formatName(user)}!
+  </h1>
+);
+
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+);
+*/
+
+JSX is an Expression Too: JSX is an 也是一个表达式;
+
+/*
+function getGreeting(user) {
+  if (user) {
+    return <h1>Hello, {formatName(user)}!</h1>;
+  }
+  return <h1>Hello, Stranger.</h1>;
+}
+传user: return <h1>Hello, {formatName(user)}!</h1>;
+没传: return <h1>Hello, Stranger.</h1>;
+
+*/
+
+
+babel中  ES6   转虚拟DOM     ===>
+ES6
+<div>hello</div>
+
+
+虚拟DOM:
+{
+    type: "div",
+    props: {
+        children: "hello"
+    }
+}
+
+
+React:
+"use strict";
+
+React.createElement(
+  "div",
+  null,
+  "hello"
+);
+
+
+JSX Prevents Injection Attacks: 避免注入攻击
+let msg = "zfpx";//<script>while(true){}</script> 危险的脚本(死循环)
+let element1 = <div>
+    {msg}
+    <button tabIndex={1}>1</button>
+    <button tabIndex={2}>2</button>
+    <button tabIndex={3}>3</button>
+    <img
+        src={imgSrc}
+        className="myimg"
+        style={{
+            width: "100px",
+            border: "2px solid red",
+            background: "yellow"}}
+    />
+</div>;
 
 
 
+converted : 渲染
+XSS: XSS攻击
 
 
+语法糖,看着更直接;
+const element = (
+  <h1 className="greeting">
+    Hello, world!
+  </h1>
+);
+
+
+下面这个写的跟上面语法糖一样;执行时候的样子;
+三个参数:
+const element = React.createElement(
+  'h1',//参数一: 标签的类型
+  {className: 'greeting'},//参数二: 对象
+  'Hello, world!'//参数三: 子元素
+);
+
+
+这就是虚拟DOM:
+// Note: this structure is simplified
+const element = {
+  type: 'h1',
+  props: {
+    className: 'greeting',
+    children: 'Hello, world'
+  }
+};
+
+
+rendering React elements to the DOM in the next section: 把react元素渲染成一个真实的DOM
+
+
+------------------------------------------------------
+Rendering Elements: 渲染元素
+https://reactjs.org/docs/rendering-elements.html
+
+
+
+Note: 提示;
+
+元素是组件的组成部分;
+组件是由元素组成的;
+
+Rendering an Element into the DOM: 把一个元素渲染到真实DOM上;
+
+
+Applications : 应用;
+integrating : 整合;
+existing : 现有的;
+isolated : 分离;
+
+
+Updating the Rendered Element: 更新渲染元素
+
+immutable: 不可更改的;
+Once : 一旦;
+represents : 代表;
+ticking clock: 时钟;
+
+/*
+function tick() {
+//react元素
+  const element = (
+    <div>
+      <h1>Hello, world!</h1>
+      <h2>It is {new Date().toLocaleTimeString()}.</h2>
+    </div>
+  );
+  ReactDOM.render(
+    element,
+    document.getElementById('root')
+  );
+}
+
+setInterval(tick, 1000);
+*/
+
+
+
+课间,看中文文档;安装-->列表&keys
+{
+安装
+Hello World
+JSX简介
+元素渲染
+组件(Components)和属性(Props)
+状态(State)和生命周期
+事件处理
+条件渲染
+列表(Lists)和键(Keys)
+表单-------------------20171031今天讲到这里了
+状态提升
+组合 Vs 继承
+React理念
+}
+
+------------------------------------------------------下午
+Components And Props : 部件和道具
+https://reactjs.org/docs/components-and-props.html
+
+
+Functional and Class Components: 函数,类;
+
+
+components : 组件;
+
+
+You can also use an ES6 class to define a component: 你也可以使用ES6 类 定义一个组件;(通过类来声明组件;)
+
+
+A button, a form, a dialog, a screen:  一个按钮,表单,对话框,屏幕,
+
+
+翻墙,搜React Developer Tools
+
+
+
+http://img2.imgtn.bdimg.com/it/u=2744029691,616518315&fm=27&gp=0.jpg
+
+
+
+                /*{props.date.toLocaleString()}*/
+{formatDate(props.date)}
+function formatDate(date) {
+    return date.toLocaleString();
+}
 
 
 
