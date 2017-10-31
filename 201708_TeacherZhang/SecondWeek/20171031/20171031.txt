@@ -1,0 +1,101 @@
+
+张仁阳<hongqishi@qq.com>  9:37:18
+1 react官网 https://reactjs.org/
+2. http://www.css88.com/react/
+3. http://huziketang.com/books/react/lesson1
+
+通过这个,写出react代码;经过bable编译的
+https://codepen.io/gaearon/pen/ZpvBNJ?editors=0010
+
+The smallest React example looks like this: react小例子
+ReactDOM.render(
+    //HTML标签
+    <h1>Hello, world!</h1>,
+    //DOM元素
+    document.getElementById('root')
+    //把标签放到div里面;
+);
+
+
+下载这个工具,安装create-react-app -g
+npm install create-react-app -g
+
+
+elements and components.
+元素 and 组件
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
